@@ -8,3 +8,5 @@ WebContent/Upload/
 WebContent/resources/images/
 build/
 .settings/
+*.classpath
+*.project
