@@ -1,0 +1,10 @@
+.idea/
+*.class
+out/
+references/
+web/Product/
+web/Profile/
+web/Upload/
+web/resources/images/
+build/
+.settings/
