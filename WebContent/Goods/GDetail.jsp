@@ -36,9 +36,9 @@
 
 <div id="container">
 
-    <form method="post" action="../Goods/GOrder.do" name="optionForm">
-        <input type="hidden" name="complitedOption" value="" />
-    </form>
+<form method="post" action="../Goods/GOrder.do" name="optionForm">
+    <input type="hidden" name="complitedOption" value="" />
+</form>
 
     <!-- contents -->
     <div id="contents" class="productView">
@@ -134,27 +134,27 @@
                     <div id="ContentPlaceHolder1_WUC_Guest_AbilityDetail_divOptionOn" style="display:;">
                         <div class="pdtOption">
                             <h3>옵션선택</h3>
-                            <ol>
-                                <li>
+                                <ol>
+                                    <li>
                                 <span class="input-check">
                                     <input type="checkbox" id="option1" />
                                 </span>
-                                    <span class="label">기본 스킨디자인</span>
-                                    <span class="optionPrice">+0원</span>
-                                </li>
-                                <li>
+                                        <span class="label">기본 스킨디자인</span>
+                                        <span class="optionPrice">+0원</span>
+                                    </li>
+                                    <li>
                                 <span class="input-check">
                                     <input type="checkbox" id="option2" /></span>
-                                    <span class="label">기본 세트디자인</span>
-                                    <span class="optionPrice">+20,000원</span>
-                                </li>
-                                <li>
+                                        <span class="label">기본 세트디자인</span>
+                                        <span class="optionPrice">+20,000원</span>
+                                    </li>
+                                    <li>
                                 <span class="input-check">
                                     <input type="checkbox" id="option3" /></span>
-                                    <span class="label">컴플릿 세트 디자인</span>
-                                    <span class="optionPrice">+1,000원</span>
-                                </li>
-                            </ol>
+                                        <span class="label">컴플릿 세트 디자인</span>
+                                        <span class="optionPrice">+1,000원</span>
+                                    </li>
+                                </ol>
                         </div>
                     </div>
                     <div class="amount">총 금액&nbsp;

@@ -12,6 +12,6 @@
     <title>초기 페이지</title>
 </head>
 <body>
-<c:redirect url="./Goods/Main.jsp" />
+<c:redirect url="./Goods/Main.do" />
 </body>
 </html>
