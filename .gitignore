@@ -2,9 +2,9 @@
 *.class
 out/
 references/
-web/Product/
-web/Profile/
-web/Upload/
-web/resources/images/
+WebContent/Product/
+WebContent/Profile/
+WebContent/Upload/
+WebContent/resources/images/
 build/
 .settings/
