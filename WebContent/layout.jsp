@@ -83,9 +83,9 @@
 				$('.utilMenu').addClass('hidden');
 			}
 
-			if (document.getElementById("str").value !== "") {
+			/* if (document.getElementById("str").value !== "") {
 				alert(str);
-			}
+			} */
 
 		});
 	</script>
@@ -223,7 +223,7 @@
 			var f = document.myForm;
 
 			if ($('input:checkbox[id=chk_agree1]').is(':checked') == false) {
-				alert("미스터스 이용약관에 동의하세요.");
+				alert("이용약관에 동의하세요.");
 				return;
 			}
 			if ($('input:checkbox[id=chk_agree2]').is(':checked') == false) {
@@ -251,7 +251,7 @@
 
 <input id="sessionId" type="hidden" name="sessionId"
 	   value="${sessionScope.session.mbId}" />
-<input id="str" type="hidden" name="str" value="${str }" />
+<%-- <input id="str" type="hidden" name="str" value="${str }" /> --%>
 
 
 <div id="wrapper">
@@ -315,7 +315,7 @@
 							<div class="innerWrap">
 								<ul class="list1">
 									<li><a href="../My/MyProfile.do">프로필 관리</a></li>
-									<li><a href="../My/MyAuth.do">계정 관리</a></li>
+									<li><a href="../My/MyAccount.do">계정 관리</a></li>
 								</ul>
 								<ul class="list2">
 									<li class="m1"><a href="../My/SellProdReg.do">재능 등록</a></li>
@@ -335,7 +335,7 @@
 				<!-- 유틸메뉴 로그아웃 -->
 
 				<div class="headerLogin" style="display:;">
-						<span class="login" style="float: right;"><a
+						<span class="login" style="float: right;"><a 
 								href="javascript:openLogin();">로그인</a></span> <span class="register"><a
 						href="#" style="display: none;"
 						onclick="showLayer('registerPop','modalpop'); return false;">회원가입</a></span>
@@ -469,16 +469,12 @@
 									/ 비밀번호 찾기</span></a>
 					</div>
 				</div>
-				<div class="loginFb">
-					<input type="image" name=""
-						   src="../resources/images/common/btn_loginFb.gif" />
-				</div>
 				<p class="btnLogin">
 					<a href="javascript:goLogin();">로그인</a>
 				</p>
 				<div class="memberJoin">
-					<span>아직 미스터스 멤버가 아니십니까?</span> <a
-						href="javascript:changeForMemberJoin();">미스터스 멤버로 가입하기</a>
+					<span>아직 회원이 아니십니까?</span> <a
+						href="javascript:changeForMemberJoin();">회원으로 가입하기</a>
 				</div>
 			</div>
 			<div class="popClose">
@@ -512,13 +508,12 @@
 				</div>
 				<div class="agreeChk">
 						<span class="input-check"><input id="chk_agree1"
-														 type="checkbox" name="" /></span> <label class="label mgr30">미스터스
-					이용약관 동의</label> <span class="input-check"><input id="chk_agree2"
+														 type="checkbox" name="" /></span> <label class="label mgr30">탤런트 이용약관 동의</label> <span class="input-check"><input id="chk_agree2"
 																	 type="checkbox" name="" /></span> <label class="label">개인정보
 					보호약관 동의</label>
 				</div>
 				<div class="memberJoin">
-					<a onclick="validateMemberJoin();" class="memberJoin">미스터스 멤버로
+					<a onclick="validateMemberJoin();" href="#" class="memberJoin">회원
 						가입하기</a>
 				</div>
 			</div>
@@ -557,7 +552,7 @@
 		<h4 class="popTitle">회원가입</h4>
 		<div class="layerPopBody">
 			<p class="p">
-				회원가입이 완료되었습니다.<br /> 지금 바로 미스터스에 재능을 등록하여<br /> 내 재능을 판매해 보세요
+				회원가입이 완료되었습니다.<br /> 지금 바로 재능을 등록하여<br /> 내 재능을 판매해 보세요
 			</p>
 			<div class="registerTalent">
 				<a href="../My/SellProdReg.do">내 재능 등록하기</a>

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div id="ContentPlaceHolder1_WUC_MyPoint1_UpdatePanel1">
+<div>
 
     <div class="primaryContents myPoint">
         <!-- 마이페이지lnb -->
@@ -61,7 +61,7 @@
                     </tbody>
                 </table>
                 <div class="seeMore">
-                    <a id="ContentPlaceHolder1_WUC_MyPoint1_lbtnGoNext" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$WUC_MyPoint1$lbtnGoNext&#39;,&#39;&#39;)">더보기</a>
+                    <a href="">더보기</a>
                 </div>
             </div>
             <!-- //게시판영역 -->

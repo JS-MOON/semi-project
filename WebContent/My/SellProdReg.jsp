@@ -21,12 +21,15 @@
 
 <script type="text/javascript">
     function saveValidate() {
-        var ctlUP = document.getElementById('fu_attach');
-        var ctlFile1 = ctlUP.files[0];
-        if (ctlFile1 == null) {
+        var ctlUP1 = document.getElementById('fu_attach1');
+		var ctlUP2 = document.getElementById('fu_attach1');
+        var ctlFile1 = ctlUP1.files[0];
+		var ctlFile2 = ctlUP2.files[0];
+
+        if (ctlFile1 == null || ctlFile2 == null) {
             return true;
         } else {
-            if (ctlFile1.size > 10240000) {
+            if (ctlFile1.size > 10240000 || ctlFile2.size > 10240000) {
                 alert('최대 업로드 가능용량은 10M입니다.');
                 return false;
             }
@@ -36,11 +39,8 @@
 
 
     function option(){
-
-
-
-    	var s1 = document.myForm.s1;
-    	var s2 = document.myForm.s2;
+    	var s1 = document.sellForm.s1;
+    	var s2 = document.sellForm.s2;
 
     	while (s2.length != 0) {
 			s2.options.remove(0);
@@ -202,8 +202,7 @@
 
 
 	function sellIt() {
-
-		var f = document.myForm;
+		var f = document.sellForm;
 
 		var optionsList = document.getElementsByName("options");
 		var pricesList = document.getElementsByName("prices");
@@ -237,7 +236,7 @@
 </script>
 
 
-<form action="" name="myForm" method="post" enctype="multipart/form-data">
+<form action="" name="sellForm" method="post" enctype="multipart/form-data">
 
 <div class="primaryContents registerTalent">
     <!-- 마이페이지lnb -->
@@ -352,7 +351,7 @@
                     <div class="settingOption">
 
                         <input name="brPrice" type="text" maxlength="12" class="input-text" style="width:129px;" />
-                        <label for=""> 원</label>
+                        <label> 원</label>
                     </div>
                 </div>
 
@@ -388,8 +387,8 @@
         <p class="settingDesc">포트폴리오 및 상세페이지에서 사용될 모든 자료를 하나로 압축해서 올려주세요.<font color="red"> (용량제한: 10MB 미만)</font></p>
         <div class="settingOption">
 
-            <input type="file" name="brMainPhoto" id="fu_attach" class="input-file" style="width:498px;width: 100%;" />
-            <input type="file" name="brMorePhoto" id="fu_attach" class="input-file" style="width:498px;width: 100%;" />
+            <input type="file" name="brMainPhoto" id="fu_attach1" class="input-file" style="width:498px;width: 100%;" />
+            <input type="file" name="brMorePhoto" id="fu_attach2" class="input-file" style="width:498px;width: 100%;" />
         </div>
 
 

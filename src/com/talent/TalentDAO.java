@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 public class TalentDAO {
 
 	private Connection conn;
@@ -23,13 +25,13 @@ public class TalentDAO {
 
 		try {
 
-			sql = "insert into member(mb_id,mb_pw";
-			sql += ") values(?,?)";
+			sql = "insert into member(mb_id,mb_pw,mb_pic) values(?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, dto.getMbId());
 			pstmt.setString(2, dto.getMbPw());
+			pstmt.setString(3, dto.getMbPic());
 
 			result = pstmt.executeUpdate();
 
@@ -78,47 +80,7 @@ public class TalentDAO {
 		return dto;
 	}
 
-	// 전체 데이타 출력
-	public List<TalentDTO> getList() {
-
-		List<TalentDTO> lists = new ArrayList<TalentDTO>();
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-
-		try {
-
-			sql = "select mb_id,mb_pw,mb_nickName,mb_tel,mb_pic,mb_about from member";
-
-			pstmt = conn.prepareStatement(sql);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				TalentDTO dto = new TalentDTO();
-
-				dto.setMb_id(rs.getString("mb_id"));
-				dto.setMb_pw(rs.getString("mb_pw"));
-				dto.setMb_nickName(rs.getString("mb_nickName"));
-				dto.setMb_tel(rs.getString("mb_tel"));
-				dto.setMb_pic(rs.getString("mb_pic"));
-				dto.setMb_about(rs.getString("mb_about"));
-
-				lists.add(dto);
-
-			}
-			pstmt.close();
-			rs.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		return lists;
-
-	}
-
+	
 	public String login(String mb_id) {
 
 		String mb_pw_r = "";
@@ -150,36 +112,6 @@ public class TalentDAO {
 		return mb_pw_r;
 	}
 
-	// 회원 정보 수정
-
-	public int updateMember(TalentDTO dto) {
-
-		PreparedStatement pstmt = null;
-		String sql;
-		int result = 0;
-
-		try {
-
-			sql = "update member set mb_pw=?,mb_tel=?,mb_pic=?,mb_about=?,mb_nickName=? where mb_id=?";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, dto.getMb_pw());
-			pstmt.setString(2, dto.getMb_tel());
-			pstmt.setString(3, dto.getMb_pic());
-			pstmt.setString(4, dto.getMb_about());
-			pstmt.setString(5, dto.getMb_nickName());
-			pstmt.setString(6, dto.getMb_id());
-
-			result = pstmt.executeUpdate();
-
-			pstmt.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		return result;
-	}
 
 	public MemberDTO getReadMember(String mbId) {
 
@@ -224,7 +156,7 @@ public class TalentDAO {
 		
 	}
 	
-	public int deleteMember(String mb_id){
+	public int deleteMember(String mbId){
 		
 		PreparedStatement pstmt = null;
 		
@@ -237,7 +169,7 @@ public class TalentDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, mb_id);
+			pstmt.setString(1, mbId);
 			
 			result = pstmt.executeUpdate();
 			
@@ -252,7 +184,87 @@ public class TalentDAO {
 		
 	}
 	
+	//프로필사진업로드(update)
+	public int updateMember(String mbPic,String mbId){
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update member set mb_pic=? where mb_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mbPic);
+			pstmt.setString(2, mbId);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+		
+	}
+
+	public int updateMember(MemberDTO dto){
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update member set mb_nickName=?,mb_about=? where mb_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getMbNickName());
+			pstmt.setString(2, dto.getMbAbout());
+			pstmt.setString(3, dto.getMbId());
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return result;	
+	}
+
 	
+	public int updateMember(String mbId,String changeMbPw1,String changeMbPw2){
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update member set mb_pw=? where mb_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, changeMbPw1);
+			pstmt.setString(2, mbId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return result;	
+	}
 	
 	
 	
@@ -329,9 +341,13 @@ public class TalentDAO {
 		ResultSet rs = null;
 		String sql;
 		try {
-			sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
-			sql += "from board A,member B where A.mb_id=B.mb_id and cg_num>=? and cg_num<=? order by A.br_num desc";
+			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num order by A.br_num desc";
+			
+			/*sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
+			sql += "from board A,member B where A.mb_id=B.mb_id and cg_num>=? and cg_num<=? order by A.br_num desc";*/
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, start);
@@ -342,6 +358,7 @@ public class TalentDAO {
 			while (rs.next()) {
 
 				dto = new BoardDTO();
+				dto.setCgCategory1(rs.getString("cg_category1"));
 				dto.setMbNickName(rs.getString("mb_nickName"));
 				dto.setBrNum(rs.getInt("br_num"));
 				dto.setMbId(rs.getString("mb_id"));
@@ -674,6 +691,40 @@ public class TalentDAO {
 		}
 		return lists;
 
+	}
+	
+	
+	
+	
+	//GDetail 관련재능
+	public List<BoardDTO> getReadRelation(int start,int end){
+		
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		try {
+			sql = "select br_num,br_subject,br_mainphoto from board ";
+			sql+= "where cg_num>=? and cg_num<=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				dto = new BoardDTO();
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				lists.add(dto);
+			}
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
 	}
 	
 	

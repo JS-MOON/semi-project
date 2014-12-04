@@ -89,7 +89,8 @@
 								
 							</div>
 							<div class="pdt_info">
-								<span class="category">${imagePath }/${dto.brMainPhoto}</span> <span class="pdtTitle">${dto.brSubject }</span>
+								<span class="category">[${dto.cgCategory1}]
+								</span> <span class="pdtTitle">${dto.brSubject }</span>
 								<div class="counting">
 									<span class="buying"> <span class="num">262</span> <span>View</span>
 									</span> <span class="price"> <span class="num">${dto.brPrice }</span> 원
