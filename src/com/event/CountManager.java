@@ -4,9 +4,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬
-//HttpSessionEvent : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-//httpSessionAttributeListener : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¼ï¿½ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¶§
+//¼­ºí¸´ÀÇ ¶óÀÌÇÁ »çÀÌÅ¬
+//HttpSessionEvent : ¼¼¼ÇÀÌ ¸¸µé¾îÁ®¼­ Á¢¼ÓÁ¤º¸¸¦ DB¿¡ ÀúÀåÇÒ ¶§
+//httpSessionAttributeListener : ¼¼¼ÇÀÌ Á¾·áµÇ¼­ DBÀÇ Á¢¼Ó Á¤º¸¸¦ Áö¿ï¶§
 //Listener 
 
 public class CountManager implements HttpSessionListener {
@@ -41,8 +41,8 @@ public class CountManager implements HttpSessionListener {
 
 		count++;
 
-		System.out.print(session.getId() + ": ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½,");
-		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½: " + count);
+		System.out.print(session.getId() + ": ¼¼¼Ç »ý¼º,");
+		System.out.println("Á¢¼ÓÀÚ¼ö: " + count);
 	}
 
 	@Override
@@ -52,8 +52,31 @@ public class CountManager implements HttpSessionListener {
 
 		count--;
 
-		System.out.print(session.getId() + ": ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½,");
-		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½: " + count);
+		System.out.print(session.getId() + ": ¼¼¼Ç ¼Ò¸ê,");
+		System.out.println("Á¢¼ÓÀÚ¼ö: " + count);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
