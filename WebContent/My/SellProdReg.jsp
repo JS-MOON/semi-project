@@ -39,8 +39,8 @@
     	
     	
     	
-    	var s1 = document.myForm.s1;
-    	var s2 = document.myForm.s2;
+    	var s1 = document.sellForm.s1;
+    	var s2 = document.sellForm.s2;
     	
     	while (s2.length != 0) {
 			s2.options.remove(0);
@@ -237,7 +237,7 @@
 </script>
 
 
-<form action="" name="myForm" method="post" enctype="multipart/form-data">
+<form action="" name="sellForm" method="post" enctype="multipart/form-data">
 
 <div class="primaryContents registerTalent">
     <!-- 마이페이지lnb -->

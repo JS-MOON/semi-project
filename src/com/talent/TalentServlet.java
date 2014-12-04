@@ -278,41 +278,18 @@ public class TalentServlet extends HttpServlet {
 
 			url = cp + "/Goods/Main.jsp";
 			resp.sendRedirect(url);
-
-			
-			
-			
-			
-			
-			
-			
-			
 			
 		} else if (uri.indexOf("GList.do") != -1) {
 
 			int start = Integer.parseInt(req.getParameter("start"));
 			int end = Integer.parseInt(req.getParameter("end"));
-//			int cgNum = Integer.parseInt(req.getParameter("cgNum"));
-			
-			
-			
-			//ī�װ� �ҷ�����
-			
-			
-			
-			
-			//board ���̺� �ҷ�����
-			
-//			if(cgNum!=0){
-//				List<BoardDTO> lists = dao.list(cgNum);
-//				req.setAttribute("lists", lists);
-				
-//			}else if(cgNum==0){
-				List<BoardDTO> lists = dao.list(start, end);
-				req.setAttribute("lists", lists);
-//			}
-			
 
+			List<BoardDTO> lists = dao.list(start, end);
+			req.setAttribute("lists", lists);
+
+
+			
+			
 			String imagePath = cp + "/Product";
 
 			if(1<=start && start<=14){
@@ -369,26 +346,20 @@ public class TalentServlet extends HttpServlet {
 
 			url = "/Goods/GList.jsp";// �����ּ�
 			forward(req, resp, url);
-
-			
-			
 			
 		} else if (uri.indexOf("GList_ok.do") != -1) {	
-			
 		
 			int cgNum = Integer.parseInt(req.getParameter("cgNum"));
-			
 			
 			url = "GList.do?start=" + cgNum + "&end=" + cgNum ;
 			resp.sendRedirect(url);
 			
-			
-			
-			
 		} else if (uri.indexOf("GDetail.do") != -1) {
 
 			int brNum = Integer.parseInt(req.getParameter("brNum"));
-
+			
+			/*List<BoardDTO> relists = dao.getReadRelation(start, end);
+			req.setAttribute("relists", relists);*/
 			// �Ѹ��� ������ �ҷ�����
 			BoardDTO dto = dao.getReadData(brNum);
 			// �ɼǹ迭 �ҷ�����
@@ -406,7 +377,6 @@ public class TalentServlet extends HttpServlet {
 			// ��� �Ѹ�ã�� �޼ҵ�
 			MemberDTO mbdto = dao.getReadMember(MbId);
 			String nickName = mbdto.getMbNickName();
-
 			
 			dto.setBrContent(dto.getBrContent().replaceAll("\n", "<br/>"));
 			String imagePath = cp + "/Product";
@@ -414,6 +384,8 @@ public class TalentServlet extends HttpServlet {
 			//���
 			List<CommentsDTO> lists = dao.cmList(brNum);
 			List<CommentsDTO> newLists = new ArrayList<CommentsDTO>();
+			
+			
 
 			String[] subject = new String[lists.size()];
 
@@ -440,17 +412,12 @@ public class TalentServlet extends HttpServlet {
 
 			url = "/Goods/GDetail.jsp";// �����ּ�
 			forward(req, resp, url);
-
-			
-			
 			
 		}else if (uri.indexOf("comments_ok.do") != -1) {
 
 			int brNum = Integer.parseInt(req.getParameter("brNum"));
 			
 			CommentsDTO dto = new CommentsDTO();
-			
-		
 			
 			int cmMaxNum = dao.cmMaxNum();
 			dto.setCmNum(cmMaxNum + 1);

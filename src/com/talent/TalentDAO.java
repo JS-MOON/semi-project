@@ -287,7 +287,7 @@ public class TalentDAO {
 
 	}
 
-	// board Å×ÀÌºí insert
+	// board ï¿½ï¿½ï¿½Ìºï¿½ insert
 	public int BoardInsert(BoardDTO dto) {
 
 		int result = 0;
@@ -320,7 +320,7 @@ public class TalentDAO {
 
 	}
 
-	// °Ô½ÃÆÇ Ãâ·Â (´ëºÐ·ù·Î Ãâ·Â)
+	// ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
 	public List<BoardDTO> list(int start, int end) {
 
 		List<BoardDTO> lists = new ArrayList<BoardDTO>();
@@ -367,7 +367,7 @@ public class TalentDAO {
 	
 	
 	
-	// °Ô½ÃÆÇ Ãâ·Â (¼ÒºÐ·ù·Î Ãâ·Â)
+	// ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ÒºÐ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
 		public List<BoardDTO> list(int cgNum) {
 
 			List<BoardDTO> lists = new ArrayList<BoardDTO>();
@@ -414,7 +414,7 @@ public class TalentDAO {
 	
 	
 
-	// board °Ô½ÃÆÇ ÇÑ°³ select
+	// board ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ select
 	public BoardDTO getReadData(int brNum) {
 
 		BoardDTO dto = null;
@@ -452,7 +452,7 @@ public class TalentDAO {
 
 	}
 
-	// board °Ô½ÃÆÇ µ¥ÀÌÅÍ »èÁ¦
+	// board ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int boardDelete(int brNum) {
 
 		int result = 0;
@@ -473,7 +473,7 @@ public class TalentDAO {
 		return result;
 	}
 
-	// board°Ô½ÃÆÇ ¼öÁ¤
+	// boardï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int boardUpdate(BoardDTO dto) {
 
 		int result = 0;
@@ -502,7 +502,7 @@ public class TalentDAO {
 
 	}
 
-	// cgNumÀ¸·Î ´ëºÐ·ù ¼ÒºÐ·ù select
+	// cgNumï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð·ï¿½ ï¿½ÒºÐ·ï¿½ select
 	public CategoryDTO getReadCategory(int cgNum) {
 
 		CategoryDTO dto = null;
@@ -533,7 +533,7 @@ public class TalentDAO {
 	
 	
 	
-	//Ä«Å×°í¸® ºÒ·¯¿À±â
+	//Ä«ï¿½×°ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<CategoryDTO> getReadCategory(int start,int end){
 		
 		List<CategoryDTO> lists = new ArrayList<CategoryDTO>();
@@ -674,6 +674,40 @@ public class TalentDAO {
 		}
 		return lists;
 
+	}
+	
+	
+	
+	
+	//GDetail ê´€ë ¨ìž¬ëŠ¥
+	public List<BoardDTO> getReadRelation(int start,int end){
+		
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		try {
+			sql = "select br_num,br_subject,br_mainphoto from board ";
+			sql+= "where cg_num>=? and cg_num<=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				dto = new BoardDTO();
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				lists.add(dto);
+			}
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
 	}
 	
 	
