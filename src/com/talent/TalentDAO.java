@@ -366,9 +366,12 @@ public class TalentDAO {
 			ResultSet rs = null;
 			String sql;
 			try {
-				sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+				/*sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 				sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
-				sql += "from board A,member B where A.mb_id=B.mb_id and cg_num=? order by A.br_num desc";
+				sql += "from board A,member B where A.mb_id=B.mb_id and cg_num=? order by A.br_num desc";*/
+				
+				sql = "select br_num,br_subject,br_mainphoto,br_price from board ";
+				sql+= "where cg_num=?";
 				pstmt = conn.prepareStatement(sql);
 
 				pstmt.setInt(1, cgNum);
@@ -379,17 +382,12 @@ public class TalentDAO {
 				while (rs.next()) {
 
 					dto = new BoardDTO();
-					dto.setMbNickName(rs.getString("mb_nickName"));
+					
 					dto.setBrNum(rs.getInt("br_num"));
-					dto.setMbId(rs.getString("mb_id"));
-					dto.setCgNum(rs.getInt("cg_num"));
 					dto.setBrSubject(rs.getString("br_subject"));
 					dto.setBrMainPhoto(rs.getString("br_mainphoto"));
-					dto.setBrMorePhoto(rs.getString("br_morephoto"));
-					dto.setBrContent(rs.getString("br_content"));
-					dto.setBrOptions(rs.getString("br_options"));
 					dto.setBrPrice(rs.getInt("br_price"));
-					dto.setBrDate(rs.getString("br_date"));
+				
 					lists.add(dto);
 
 				}
@@ -679,7 +677,7 @@ public class TalentDAO {
 		String sql;
 		try {
 			sql = "select br_num,br_subject,br_mainphoto from board ";
-			sql+= "where cg_num>=? and cg_num<=?";
+			sql+= "where cg_num>=? and cg_num<=? order by br_date desc";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
@@ -701,36 +699,17 @@ public class TalentDAO {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

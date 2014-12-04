@@ -20,7 +20,7 @@
 			<div>
 				<div class="subCategory">
 					<ul>
-						<li><a href="GList.jsp?pg%3d1%26sr%3d1%26cy%3d140&ct=140">
+						<li><a href="GList.do?start=1&end=109">
 								<input type="submit" name=""
 								value="전체"
 								style="background-color: #EDEDED; border-style: None; height: 26px;" />
@@ -79,7 +79,7 @@
 							<div>
 								
 									<span class="pdtThumb"> <img
-										src="${imagePath }/${dto.brMainPhoto}"
+										src="../Product/${dto.brMainPhoto}"
 										alt="기업용 홈페이지 제작해드립니다." Height=308px Width=308px /> <span
 										class="btnWistList on"> <input type="image"
 											src="../resources/images/product/btn_wishList_on.png"

@@ -360,7 +360,8 @@ public class TalentServlet extends HttpServlet {
 
 			int start = Integer.parseInt(req.getParameter("start"));
 			int end = Integer.parseInt(req.getParameter("end"));
-
+			
+			//대분류 select
 			List<BoardDTO> lists = dao.list(start, end);
 			req.setAttribute("lists", lists);
 
@@ -415,6 +416,8 @@ public class TalentServlet extends HttpServlet {
 			}
 			
 			
+			
+			//카테고리 찍어주기
 			List<CategoryDTO> cglists = dao.getReadCategory(start, end);
 			req.setAttribute("cglists", cglists);
 			
@@ -435,12 +438,14 @@ public class TalentServlet extends HttpServlet {
 
 			int brNum = Integer.parseInt(req.getParameter("brNum"));
 			
-			/*List<BoardDTO> relists = dao.getReadRelation(start, end);
-			req.setAttribute("relists", relists);*/
-			// �Ѹ��� ������ �ҷ�����
+			
+			
 			BoardDTO dto = dao.getReadData(brNum);
-			// �ɼǹ迭 �ҷ�����
+			
 			List<String> op = dto.getBrOptionsList();
+			
+			
+			
 
 			// ī�װ� �ҷ�����
 			int cgNum = dto.getCgNum();
@@ -448,6 +453,15 @@ public class TalentServlet extends HttpServlet {
 			String category1 = cgdto.getCgCategory1();
 			String category2 = cgdto.getCgCategory2();
 
+			
+			
+			System.out.println("cgNum : "+cgNum);
+			//관련재능 select
+			List<BoardDTO> relists = dao.list(cgNum);
+			System.out.println("relists"+relists);
+			req.setAttribute("relists", relists);
+			
+			
 			// �ۿø���� �ҷ�����
 			String MbId = dto.getMbId();
 
@@ -461,7 +475,6 @@ public class TalentServlet extends HttpServlet {
 			//���
 			List<CommentsDTO> lists = dao.cmList(brNum);
 			List<CommentsDTO> newLists = new ArrayList<CommentsDTO>();
-			
 			
 
 			String[] subject = new String[lists.size()];
