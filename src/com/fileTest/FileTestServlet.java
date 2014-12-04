@@ -140,7 +140,7 @@ public class FileTestServlet extends HttpServlet {
 				FileTestDTO dto = dao.getReadData(num);
 
 				//���ϻ���
-				FileManager.dofileDelete(dto.getSaveFileName(), path);
+				FileManager.doFileDelete(dto.getSaveFileName(), path);
 
 				//db����
 				dao.deleteData(num);

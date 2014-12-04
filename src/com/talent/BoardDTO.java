@@ -20,9 +20,19 @@ public class BoardDTO {
     private String brOptions;
     private List<String> brOptionsList;
     private int brPrice;
-    private Date brDate;
+    private String brDate;
+    private String mbNickName;
 
-    public int getBrNum() {
+   
+	public String getMbNickName() {
+		return mbNickName;
+	}
+
+	public void setMbNickName(String mbNickName) {
+		this.mbNickName = mbNickName;
+	}
+
+	public int getBrNum() {
         return brNum;
     }
 
@@ -82,9 +92,9 @@ public class BoardDTO {
         return brOptions;
     }
 
-    public void setBrOptions(String brOptions) {
+   public void setBrOptions(String brOptions) {
         this.brOptions = brOptions;
-
+        
         DivideOptions divideOptions = new DivideOptions();
 
         setBrOptionsList(divideOptions.parse(brOptions));
@@ -106,11 +116,11 @@ public class BoardDTO {
         this.brPrice = brPrice;
     }
 
-    public Date getBrDate() {
+    public String getBrDate() {
         return brDate;
     }
 
-    public void setBrDate(Date brDate) {
+    public void setBrDate(String brDate) {
         this.brDate = brDate;
     }
 }
