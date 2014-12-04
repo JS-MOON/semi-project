@@ -59,9 +59,9 @@ public class TalentServlet extends HttpServlet {
 			String str = "";
 
 			if (dao.selectData(mbId) != null) {
-				str = "¾ÆÀÌµğ°¡ Á¸ÀçÇÕ´Ï´Ù.";
+				str = "ì•„ì´ë””ê°€ ì¡´ì¬í•©ë‹ˆë‹¤.";
 			} else if (!mbPw1.equals(mbPw2)) {
-				str = "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
+				str = "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 			} else {
 
 				MemberDTO dto = new MemberDTO();
@@ -70,7 +70,7 @@ public class TalentServlet extends HttpServlet {
 				dto.setMbPw(mbPw1);
 				dao.insertData(dto);
 
-				str = "°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+				str = "ê°€ì…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.";
 			}
 
 			req.setAttribute("str", str);
@@ -103,10 +103,10 @@ public class TalentServlet extends HttpServlet {
 			MemberDTO dto = dao.getReadMember(mbId);
 
 			if (dto == null) {
-				str = "¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.";
+				str = "ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.";
 
 			} else if (!dto.getMbPw().equals(mbPw)) {
-				str = "ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù.";
+				str = "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.";
 
 			} else {
 				HttpSession session = req.getSession(true);
@@ -142,7 +142,7 @@ public class TalentServlet extends HttpServlet {
 
 			String str = "";
 
-			str = "·Î±×¾Æ¿ô µÇ¼Ì½À´Ï´Ù.";
+			str = "ë¡œê·¸ì•„ì›ƒ ë˜ì…¨ìŠµë‹ˆë‹¤.";
 
 			req.setAttribute("str", str);
 			
@@ -153,7 +153,7 @@ public class TalentServlet extends HttpServlet {
 			forward(req, resp, url);
 
 			
-		//My	
+			//My	
 		} else if (uri.contains("MyAccount.do")) {
 			
 			url = "/My/MyAccount.jsp";
@@ -172,29 +172,45 @@ public class TalentServlet extends HttpServlet {
 			forward(req, resp, url);
 			
 		} else if (uri.contains("MyMistus.do")) {
+			
 			url = "/My/MyMistus.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("MyOrderMng.do")) {
+			
 			url = "/My/MyOrderMng.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("MyPoint.do")) {
+			
 			url = "/My/MyPoint.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("MyProfile.do")) {
+			
 			url = "/My/MyProfile.jsp";
 			forward(req, resp, url);
-		} else if (uri.contains("MySellIncome.do")) {
-			url = "/My/MySellIncome.jsp";
+			
+		} else if (uri.contains("SellIncome.do")) {
+			
+			url = "/My/SellIncome.jsp";
 			forward(req, resp, url);
-		} else if (uri.contains("MySellMng.do")) {
-			url = "/My/MySellMng.jsp";
+			
+		} else if (uri.contains("SellMng.do")) {
+			
+			url = "/My/SellMng.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("SellProdListMy.do")) {
+			
 			url = "/My/SellProdListMy.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("SellProdReg.do")) {
+			
 			url = "/My/SellProdReg.jsp";
 			forward(req, resp, url);
+
 		}
 
 	}

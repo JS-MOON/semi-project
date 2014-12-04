@@ -14,7 +14,7 @@ public class TalentDAO {
 		this.conn = conn;
 	}
 
-	// È¸¿ø °¡ÀÔ
+	// íšŒì› ê°€ì…
 	public int insertData(MemberDTO dto) {
 
 		int result = 0;
@@ -41,7 +41,7 @@ public class TalentDAO {
 
 	}
 
-	// ÇÑ»ç¶÷ÀÇ µ¥ÀÌÅ¸ ¼±ÅÃ
+	// í•œì‚¬ëŒì˜ ë°ì´íƒ€ ì„ íƒ
 	public MemberDTO selectData(String mbId) {
 
 		MemberDTO dto = null;
@@ -78,7 +78,7 @@ public class TalentDAO {
 		return dto;
 	}
 
-	// ÀüÃ¼ µ¥ÀÌÅ¸ Ãâ·Â
+	// ì „ì²´ ë°ì´íƒ€ ì¶œë ¥
 	public List<TalentDTO> getList() {
 
 		List<TalentDTO> lists = new ArrayList<TalentDTO>();
@@ -150,7 +150,7 @@ public class TalentDAO {
 		return mb_pw_r;
 	}
 
-	// È¸¿ø Á¤º¸ ¼öÁ¤
+	// íšŒì› ì •ë³´ ìˆ˜ì •
 
 	public int updateMember(TalentDTO dto) {
 

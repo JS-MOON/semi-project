@@ -106,21 +106,21 @@ public class TalentServletChoi extends HttpServlet {
 			
 			if(dto==null){
 				
-				str="¾ÆÀÌµğ°¡ Á¸Àç ÇÏÁö ¾Ê½À´Ï´Ù.";
+				str="ì•„ì´ë””ê°€ ì¡´ì¬ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 				req.setAttribute("result",str);
 				url = "/talent/login.jsp";
 				forward(req, resp, url);
 				
-			}else if(!dto.getMb_pw().equals(mb_pw)){//¾ÆÀÌµğ Á¸Àç½Ã ºñ¹Ğ¹øÈ£ ÆÇº°
+			}else if(!dto.getMb_pw().equals(mb_pw)){//ì•„ì´ë”” ì¡´ì¬ì‹œ ë¹„ë°€ë²ˆí˜¸ íŒë³„
 				
-				str = "ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù.";
+				str = "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.";
 				req.setAttribute("result",str);
 				url = "/talent/login.jsp";
 				forward(req, resp, url);
 				
 			}
 				
-			str = "·Î±×ÀÎ ¼º°ø!";	
+			str = "ë¡œê·¸ì¸ ì„±ê³µ!";	
 			req.setAttribute("result",str);
 		
 			HttpSession session = req.getSession(true);
@@ -162,14 +162,14 @@ public class TalentServletChoi extends HttpServlet {
 			String mb_pw_r = dao.login(mb_id);
 			
 			if(!mb_pw.equals(mb_pw_r)){
-				str = "ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù.";
+				str = "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.";
 				req.setAttribute("str", str);
 				url = "/talent/updateMember.jsp";
 				forward(req, resp, url); 
 				
 			}else if(!mb_pw1.equals(mb_pw2)){
 				
-				str = "ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.";
+				str = "ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.";
 				req.setAttribute("str", str);
 				url = "/talent/updateMember.jsp";
 				forward(req, resp, url); 
