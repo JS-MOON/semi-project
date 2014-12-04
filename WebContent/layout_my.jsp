@@ -252,7 +252,6 @@
 
 <input id="sessionId" type="hidden" name="sessionId"
        value="${sessionScope.session.mbId}" />
-<input id="str" type="hidden" name="str" value="${str }" />
 
 
 <div id="wrapper">
@@ -316,7 +315,7 @@
                             <div class="innerWrap">
                                 <ul class="list1">
                                     <li><a href="../My/MyProfile.do">프로필 관리</a></li>
-                                    <li><a href="../My/MyAuth.do">계정 관리</a></li>
+                                    <li><a href="../My/MyAccount.do">계정 관리</a></li>
                                 </ul>
                                 <ul class="list2">
                                     <li class="m1"><a href="../My/SellProdReg.do">재능 등록</a></li>
@@ -506,16 +505,12 @@
 									/ 비밀번호 찾기</span></a>
                     </div>
                 </div>
-                <div class="loginFb">
-                    <input type="image" name=""
-                           src="../resources/images/common/btn_loginFb.gif" />
-                </div>
                 <p class="btnLogin">
                     <a href="javascript:goLogin();">로그인</a>
                 </p>
                 <div class="memberJoin">
-                    <span>아직 미스터스 멤버가 아니십니까?</span> <a
-                        href="javascript:changeForMemberJoin();">미스터스 멤버로 가입하기</a>
+                    <span>아직 회원이 아니십니까?</span> <a
+                        href="javascript:changeForMemberJoin();">회원으로 가입하기</a>
                 </div>
             </div>
             <div class="popClose">
@@ -549,8 +544,7 @@
                 </div>
                 <div class="agreeChk">
 						<span class="input-check"><input id="chk_agree1"
-                                                         type="checkbox" name="" /></span> <label class="label mgr30">미스터스
-                    이용약관 동의</label> <span class="input-check"><input id="chk_agree2"
+                                                         type="checkbox" name="" /></span> <label class="label mgr30">탤런트 이용약관 동의</label> <span class="input-check"><input id="chk_agree2"
                                                                      type="checkbox" name="" /></span> <label class="label">개인정보
                     보호약관 동의</label>
                 </div>

@@ -260,7 +260,7 @@
                                 <div class="optionWrap option2">
                                     <span class="t">결제 사유</span>
                                     <div class="inputWrap">
-                                        <select name="" id="" class="select" style="width:100%">
+                                        <select name="" class="select" style="width:100%">
                                             <option>옵션 추가 구매</option>
                                             <option>옵션 추가 구매</option>
                                         </select>
@@ -269,7 +269,7 @@
                                 <div class="optionWrap option3">
                                     <span class="t">결제 사유</span>
                                     <div class="inputWrap">
-                                        <select name="" id="" class="select" style="width:100%">
+                                        <select name="" class="select" style="width:100%">
                                             <option>신용카드</option>
                                             <option>신용카드</option>
                                         </select>
@@ -288,7 +288,7 @@
                             <p class="desc">주문에 문제가 발생한 경우, 주문을 취소할 수 있습니다.</p>
                             <span class="t">결제 사유</span>
                             <div class="inputWrap">
-                                <select name="" id="" class="select" style="width:100%">
+                                <select name="" class="select" style="width:100%">
                                     <option>판매자 무응답</option>
                                     <option>판매자 무응답</option>
                                 </select>

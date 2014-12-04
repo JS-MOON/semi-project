@@ -43,9 +43,9 @@
 					</ul>
 				</div>
 			</div>
-			<div id="">
+			<div>
 				<div class="pdtSort">
-					<select name="" onchange="sortIt()" id="" style="width: 110px;">
+					<select name="" onchange="sortIt()" style="width: 110px;">
 						<option selected="selected" value="1">최고가순</option>
 						<option value="2">최저가순</option>
 						<option value="3">최신상품순</option>

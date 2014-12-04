@@ -21,31 +21,31 @@
 
 <script type="text/javascript">
     function saveValidate() {
-        var ctlUP = document.getElementById('fu_attach');
-        var ctlFile1 = ctlUP.files[0];
-        if (ctlFile1 == null) {
+        var ctlUP1 = document.getElementById('fu_attach1');
+		var ctlUP2 = document.getElementById('fu_attach1');
+        var ctlFile1 = ctlUP1.files[0];
+		var ctlFile2 = ctlUP2.files[0];
+
+        if (ctlFile1 == null || ctlFile2 == null) {
             return true;
         } else {
-            if (ctlFile1.size > 10240000) {
+            if (ctlFile1.size > 10240000 || ctlFile2.size > 10240000) {
                 alert('최대 업로드 가능용량은 10M입니다.');
                 return false;
             }
         }
         return true;
     }
- 
-    
+
+
     function option(){
-    	
-    	
-    	
     	var s1 = document.sellForm.s1;
     	var s2 = document.sellForm.s2;
-    	
+
     	while (s2.length != 0) {
 			s2.options.remove(0);
 		}
-    	
+
     	if(s1.value == "110") {
    		  s2.options.add(new Option("도면/3D", "1"));
    		  s2.options.add(new Option("로고/BI/CI디자인","2"));
@@ -62,7 +62,7 @@
    		  s2.options.add(new Option("POP", "13"));
    		  s2.options.add(new Option("PPT/템플릿", "14"));
     	}
-    	
+
     	if(s1.value == "120") {
   		  s2.options.add(new Option("노하우/상담", "15"));
   		  s2.options.add(new Option("마케팅","16"));
@@ -73,7 +73,7 @@
   		  s2.options.add(new Option("투자/금융", "21"));
   		  s2.options.add(new Option("특허/변리사", "22"));
   		}
-    	
+
     	if(s1.value == "130") {
   		  s2.options.add(new Option("교정/교열", "23"));
   		  s2.options.add(new Option("독후감/서핑","24"));
@@ -84,7 +84,7 @@
   		  s2.options.add(new Option("워드/타이핑", "29"));
   		  s2.options.add(new Option("자기소개서/이력서", "30"));
 	  	}
-  	
+
     	if(s1.value == "140") {
   		  s2.options.add(new Option("매크로/엑셀", "31"));
   		  s2.options.add(new Option("모바일웹","32"));
@@ -98,7 +98,7 @@
   		  s2.options.add(new Option("IOS", "40"));
   		  s2.options.add(new Option("PC/노트북", "41"));
     	}
-    	
+
     	if(s1.value == "150") {
    		  s2.options.add(new Option("독일어번역", "42"));
    		  s2.options.add(new Option("러시아번역","43"));
@@ -110,7 +110,7 @@
    		  s2.options.add(new Option("중국어번역", "49"));
    		  s2.options.add(new Option("프랑스어번역", "50"));
       	}
-    	
+
     	if(s1.value == "160") {
   		  s2.options.add(new Option("내래이션/성우", "51"));
   		  s2.options.add(new Option("노래/댄스","52"));
@@ -120,9 +120,9 @@
   		  s2.options.add(new Option("음악레슨", "56"));
   		  s2.options.add(new Option("음악편집/녹음", "57"));
   		  s2.options.add(new Option("작곡/MR/작사", "58"));
-  		 
+
     	}
-    	
+
     	if(s1.value == "170") {
    		  s2.options.add(new Option("강사섭외", "59"));
    		  s2.options.add(new Option("댄스공연","60"));
@@ -135,7 +135,7 @@
    		  s2.options.add(new Option("행사도우미", "67"));
    		  s2.options.add(new Option("MC/사회", "68"));
         }
-    	
+
     	if(s1.value == "180") {
    		  s2.options.add(new Option("고민상담", "69"));
    		  s2.options.add(new Option("심리상담","70"));
@@ -149,7 +149,7 @@
    		  s2.options.add(new Option("투자/재테크", "78"));
    		  s2.options.add(new Option("학습/학교생활", "79"));
         }
-    	
+
     	if(s1.value == "190") {
    		  s2.options.add(new Option("건강/다이어트", "80"));
    		  s2.options.add(new Option("게임","81"));
@@ -163,7 +163,7 @@
    		  s2.options.add(new Option("재미", "89"));
    		  s2.options.add(new Option("청소/이사", "90"));
         }
-    	
+
     	if(s1.value == "200") {
      		  s2.options.add(new Option("게스트하우스", "91"));
      		  s2.options.add(new Option("국내여행","92"));
@@ -172,7 +172,7 @@
      		  s2.options.add(new Option("항공권","95"));
      		  s2.options.add(new Option("행외여행", "96"));
         }
-    	
+
     	if(s1.value == "210") {
    		  s2.options.add(new Option("도예/공예", "97"));
    		  s2.options.add(new Option("미술/예술품","98"));
@@ -188,41 +188,41 @@
    		  s2.options.add(new Option("카드/문구", "108"));
    		  s2.options.add(new Option("Wedding the M", "109"));
       }
-    
 
-    	
-    	
+
+
+
     }
- 
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
 	function sellIt() {
-		
 		var f = document.sellForm;
-		
+
 		var optionsList = document.getElementsByName("options");
 		var pricesList = document.getElementsByName("prices");
 		var option = "";
-        
+
 		//옵션1$추가금액1  & 옵션2$추가금액2 
         for(var i=0;i<optionsList.length;i++) {
         	if(option !== "" && optionsList[i].value!=="") {
         		option += "&";
         	}
-        	
+
             if (optionsList[i].value!=="") {
                 option += optionsList[i].value;
                 option += "/";
                 option += pricesList[i].value;
             }
         }
-        
+
         f.completedOption.value = option;
+<<<<<<< HEAD
         
         
         
@@ -246,14 +246,19 @@
         
 			
 		
+=======
+		alert(f.completedOption.value);
+		alert(f.s1.value +" : "+ f.s2.value);
+
+>>>>>>> origin/master
         f.action = "SellProdReg_ok.do";
         f.submit();
-		
+
 	}
-	
-	
-	
-	
+
+
+
+
 </script>
 
 
@@ -275,7 +280,7 @@
 
             <h4>카테고리</h4>
             <div class="settingOption category">
-				
+
                <select name="s1" onchange="option()" class="select" style="width:180px;width: 180px;">
                		<option value="0">선택하세요 </option>
                		<option value="110">그래픽 디자인</option>
@@ -291,20 +296,66 @@
                     <option value="210">핸드메이드</option>
 
                </select>
-               
+
                <select name="s2" class="select" style="width:180px;width: 180px;">
                		<option value="0">선택하세요</option>
-               
+
                </select>
+<<<<<<< HEAD
                
                
+=======
+
+
+
+
+
+
+
+
+
+
+
+               <!--  <select name="category1" onchange="javascript:option();" class="select" style="width:180px;width: 180px;">
+                    <option selected="selected" value="110">그래픽 디자인</option>
+                    <option value="120">사업 전문가</option>
+                    <option value="130">문서 레포트</option>
+                    <option value="140">컴퓨터 IT</option>
+                    <option value="150">번역 외국어</option>
+                    <option value="160">음악 동영상</option>
+                    <option value="170">행사 공연</option>
+                    <option value="180">노하우 상담</option>
+                    <option value="190">생활서비스</option>
+                    <option value="200">여행 가이드</option>
+                    <option value="210">핸드메이드</option>
+                </select>
+
+
+                <select name="category2"  class="select" style="width:250px;width: 250px;">
+                    <option selected="selected" value="1">도면/3D</option>
+                    <option value="2">로고/BI/CI디자인</option>
+                    <option value="3">만화/웹툰</option>
+                    <option value="4">명함</option>
+                    <option value="5">배너/상세페이지</option>
+                    <option value="6">블로그/카페/웹</option>
+                    <option value="7">사진/포토샵</option>
+                    <option value="8">일러스트/그림</option>
+                    <option value="9">전단지/홍보물</option>
+                    <option value="10">캐리커쳐/인물</option>
+                    <option value="1101010">캐릭터/아이콘</option>
+                    <option value="1101002">캘리그라피</option>
+                    <option value="1101013">POP</option>
+                    <option value="1101014">PPT/템플릿</option>
+
+                </select> -->
+>>>>>>> origin/master
 
             </div>
 
-			
-            
+
+
             	 <input name="mbId" type="hidden" value="${sessionScope.session.mbId }" />
-            
+
 
             <h4>재능 타이틀</h4>
             <div class="settingOption title">
@@ -313,7 +364,7 @@
 
             </div>
 
-            
+
 
             <h4>연락처</h4>
             <p class="settingDesc">미스터스 팀에서 판매자에게 연락할 수 있는 번호를 입력해주세요.</p>
@@ -331,7 +382,7 @@
                     <div class="settingOption">
 
                         <input name="brPrice" type="text" maxlength="12" class="input-text" style="width:129px;" />
-                        <label for=""> 원</label>
+                        <label> 원</label>
                     </div>
                 </div>
 
@@ -367,8 +418,8 @@
         <p class="settingDesc">포트폴리오 및 상세페이지에서 사용될 모든 자료를 하나로 압축해서 올려주세요.<font color="red"> (용량제한: 10MB 미만)</font></p>
         <div class="settingOption">
 
-            <input type="file" name="brMainPhoto" id="fu_attach" class="input-file" style="width:498px;width: 100%;" />
-            <input type="file" name="brMorePhoto" id="fu_attach" class="input-file" style="width:498px;width: 100%;" />
+            <input type="file" name="brMainPhoto" id="fu_attach1" class="input-file" style="width:498px;width: 100%;" />
+            <input type="file" name="brMorePhoto" id="fu_attach2" class="input-file" style="width:498px;width: 100%;" />
         </div>
 
 

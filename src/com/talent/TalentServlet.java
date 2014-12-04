@@ -72,6 +72,8 @@ public class TalentServlet extends HttpServlet {
 			String mbPw2 = req.getParameter("mbPw2");
 			String mbPic = "img_profile_img_blank_120x120.png";
 			
+			
+			
 
 			String str = "";
 
@@ -87,6 +89,15 @@ public class TalentServlet extends HttpServlet {
 				dto.setMbPw(mbPw1);
 				dto.setMbPic(mbPic);
 				dao.insertData(dto);
+				
+				HttpSession session = req.getSession(true);
+
+				MemberSession mbs = new MemberSession();
+
+				mbs.setMbId(mbId);
+				mbs.setMbPw(mbPw1);
+
+				session.setAttribute("session", mbs);
 
 
 				str = "가입이 완료되었습니다.";
@@ -352,10 +363,6 @@ public class TalentServlet extends HttpServlet {
 			url = cp + "/Goods/Main.jsp";
 			resp.sendRedirect(url);
 
-			
-
-
-
 		} else if (uri.indexOf("GList.do") != -1) {
 
 			int start = Integer.parseInt(req.getParameter("start"));
@@ -480,12 +487,16 @@ public class TalentServlet extends HttpServlet {
 			String[] subject = new String[lists.size()];
 
 			for (int i = 0; i < lists.size(); i++) {
-				CommentsDTO cdto = new CommentsDTO();
+				CommentsDTO cdto = lists.get(i);
 
-				cdto = lists.get(i);
+				if(cdto.getCmContent().contains("\r\n")) {
+					String[] a = cdto.getCmContent().split("\r\n");
+					subject[i] = a[0];
+				} else {
+					String a = cdto.getCmContent();
+					subject[i] = a;
+				}
 
-				String[] a = cdto.getCmContent().split("\r\n");
-				subject[i] = a[0];
 				cdto.setCmContent(cdto.getCmContent().replaceAll("\n", "<br/>"));
 				newLists.add(cdto);
 			}
@@ -502,7 +513,7 @@ public class TalentServlet extends HttpServlet {
 
 			url = "/Goods/GDetail.jsp";// �����ּ�
 			forward(req, resp, url);
-			
+
 		}else if (uri.indexOf("comments_ok.do") != -1) {
 
 			int brNum = Integer.parseInt(req.getParameter("brNum"));
@@ -522,6 +533,49 @@ public class TalentServlet extends HttpServlet {
 			url = "GDetail.do?brNum=" + brNum;
 			resp.sendRedirect(url);
 
+		}else if (uri.indexOf("ChangePw.do") != -1) {
+			
+			
+			HttpSession session = req.getSession();
+			
+			MemberSession mbs =
+					(MemberSession)session.getAttribute("session");
+
+			String mbId = mbs.getMbId();
+	
+			String changeMbPw1 = req.getParameter("changeMbPw1");
+			String changeMbPw2 = req.getParameter("changeMbPw2");
+			
+			
+			dao.updateMember(mbId,changeMbPw1,changeMbPw2);
+		
+			url = cp + "/My/MyAccount.jsp";
+			resp.sendRedirect(url);
+			
+ 			
+		}else if (uri.indexOf("Out.do") != -1) {
+			
+			HttpSession session = req.getSession();
+			MemberSession mbs = (MemberSession)session.getAttribute("session");
+			String str = "";
+			
+			
+			String mbId = mbs.getMbId();
+			
+			int result = dao.deleteMember(mbId);
+			
+			if(result!=0){
+				str = "그동안 이용해주셔서 감사합니다(_ _)";
+				req.setAttribute("str", str);
+				session.invalidate();
+			}
+			
+			
+			url = "/Register/Register.jsp";
+			forward(req, resp, url);
+			
+			
+			
 		}
 
 	}

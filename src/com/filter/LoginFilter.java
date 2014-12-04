@@ -40,7 +40,9 @@ public class LoginFilter implements Filter{
 		if(flag){
 			chain.doFilter(request, response);
 		}else{
-			RequestDispatcher rd = request.getRequestDispatcher("/join/login.do");
+			String str = "로그인이 필요합니다.";
+			request.setAttribute("str", str);
+			RequestDispatcher rd = request.getRequestDispatcher("/Register/Register.do");
 			rd.forward(request, response);
 		}
 		
