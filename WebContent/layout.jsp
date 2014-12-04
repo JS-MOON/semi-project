@@ -399,27 +399,18 @@
 			<!-- gnb -->
 			<div id="gnb">
 				<ul class="centered_cont">
-					<li class="m1"><a href="../Goods/GList.jsp?cy=110">그래픽 ·
-							디자인</a></li>
-					<li class="m2"><a href="../Goods/GList.jsp?cy=120">사업 ·
-							전문가</a></li>
-					<li class="m3"><a href="../Goods/GList.jsp?cy=130">문서 ·
-							레포트</a></li>
-					<li class="m4"><a href="../Goods/GList.jsp?cy=140">컴퓨터 ·
-							IT</a></li>
-					<li class="m5"><a href="../Goods/GList.jsp?cy=150">번역 ·
-							외국어</a></li>
-					<li class="m6"><a href="../Goods/GList.jsp?cy=160">음악 ·
-							동영상</a></li>
-					<li class="m7"><a href="../Goods/GList.jsp?cy=170">행사 · 공연</a></li>
-					<li class="m8"><a href="../Goods/GList.jsp?cy=180">노하우 ·
-							상담</a></li>
-					<li class="m9"><a href="../Goods/GList.jsp?cy=190">생활서비스</a></li>
-					<li class="m10"><a href="../Goods/GList.jsp?cy=200">여행 ·
-							가이드</a></li>
-					<li class="m11"><a href="../Goods/GList.jsp?cy=210">핸드메이드</a></li>
-					<li class="m12"><a href="javascript:alert('서비스 준비중 입니다');">프리미엄
-							재능관</a></li>
+					 <li class="m1"><a href="../Goods/GList.do?start=1&end=14">그래픽 · 디자인</a></li>
+                <li class="m2"><a href="../Goods/GList.do?start=15&end=22">사업 · 전문가</a></li>
+                <li class="m3"><a href="../Goods/GList.do?start=23&end=30">문서 · 레포트</a></li>
+                <li class="m4"><a href="../Goods/GList.do?start=31&end=41">컴퓨터 · IT</a></li>
+                <li class="m5"><a href="../Goods/GList.do?start=42&end=50">번역 · 외국어</a></li>
+                <li class="m6"><a href="../Goods/GList.do?start=51&end=58">음악 · 동영상</a></li>
+                <li class="m7"><a href="../Goods/GList.do?start=59&end=68">행사 · 공연</a></li>
+                <li class="m8"><a href="../Goods/GList.do?start=69&end=79">노하우 · 상담</a></li>
+                <li class="m9"><a href="../Goods/GList.do?start=80&end=90">생활서비스</a></li>
+                <li class="m10"><a href="../Goods/GList.do?start=91&end=96">여행 · 가이드</a></li>
+                <li class="m11"><a href="../Goods/GList.do?start=97&end=109">핸드메이드</a></li>
+                <li class="m12"><a href="javascript:alert('서비스 준비중 입니다');">프리미엄 재능관</a></li>
 				</ul>
 			</div>
 			<!-- //gnb -->

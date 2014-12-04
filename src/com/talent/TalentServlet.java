@@ -1,7 +1,10 @@
 package com.talent;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
 import com.util.FileManager;
+import com.util.ImageName;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by JS on 2014-12-01.
@@ -47,8 +52,7 @@ public class TalentServlet extends HttpServlet {
 		String url;
 
 		String root = getServletContext().getRealPath("/");
-		String path = root + File.separator + "pds" + File.separator
-				+ "imageFile";
+		String path = root + "Product";
 
 		if (uri.contains("Register.do")) {
 
@@ -59,9 +63,9 @@ public class TalentServlet extends HttpServlet {
 			String str = "";
 
 			if (dao.selectData(mbId) != null) {
-				str = "¾ÆÀÌµð°¡ Á¸ÀçÇÕ´Ï´Ù.";
+				str = "ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
 			} else if (!mbPw1.equals(mbPw2)) {
-				str = "ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
+				str = "ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.";
 			} else {
 
 				MemberDTO dto = new MemberDTO();
@@ -70,7 +74,7 @@ public class TalentServlet extends HttpServlet {
 				dto.setMbPw(mbPw1);
 				dao.insertData(dto);
 
-				str = "°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+				str = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 			}
 
 			req.setAttribute("str", str);
@@ -80,11 +84,7 @@ public class TalentServlet extends HttpServlet {
 
 		} else if (uri.contains("Register_ok.do")) {
 			resp.sendRedirect("../");
-		} else if (uri.contains("GDetail.do")) {
-			String brNum = req.getParameter("brNum");
-
-			url = "/Goods/GDetail.do";
-			forward(req, resp, url);
+		
 		} else if (uri.contains("GOrder.do")) {
 			String option = req.getParameter("completedOption");
 			String brNum = req.getParameter("brNum");
@@ -103,10 +103,10 @@ public class TalentServlet extends HttpServlet {
 			MemberDTO dto = dao.getReadMember(mbId);
 
 			if (dto == null) {
-				str = "¾ÆÀÌµð°¡ ¾ø½À´Ï´Ù.";
+				str = "ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 
 			} else if (!dto.getMbPw().equals(mbPw)) {
-				str = "ºñ¹Ð¹øÈ£°¡ Æ²·È½À´Ï´Ù.";
+				str = "ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ Æ²ï¿½È½ï¿½ï¿½Ï´ï¿½.";
 
 			} else {
 				HttpSession session = req.getSession(true);
@@ -142,7 +142,7 @@ public class TalentServlet extends HttpServlet {
 
 			String str = "";
 
-			str = "·Î±×¾Æ¿ô µÇ¼Ì½À´Ï´Ù.";
+			str = "ï¿½Î±×¾Æ¿ï¿½ ï¿½Ç¼Ì½ï¿½ï¿½Ï´ï¿½.";
 
 			req.setAttribute("str", str);
 			
@@ -195,7 +195,285 @@ public class TalentServlet extends HttpServlet {
 		} else if (uri.contains("SellProdReg.do")) {
 			url = "/My/SellProdReg.jsp";
 			forward(req, resp, url);
+		}if (uri.indexOf("SellProdReg.do") != -1) {
+
+			
+			url = "/My/SellProdReg.jsp";// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+			forward(req, resp, url);
+
+			
+			
+			
+			
+			
+			
+			
+		}else if (uri.indexOf("SellProdReg.do") != -1) {
+
+		
+			url = "/My/SellProdReg.jsp";// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+			forward(req, resp, url);
+
+		} else if (uri.indexOf("SellProdReg_ok.do") != -1) {
+			
+			BoardDTO dto = new BoardDTO();
+			ImageName im = new ImageName();
+
+			String encType = "UTF-8";
+			int maxSize = 5 * 1024 * 1024; // 5mb
+
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
+			MultipartRequest mr = new MultipartRequest(req, path, maxSize,
+					encType, new DefaultFileRenamePolicy());// req,ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ø½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½
+
+			String fileName1 = mr.getOriginalFileName("brMainPhoto");
+			String fileName2 = mr.getOriginalFileName("brMorePhoto");
+			String newFileName1 = im.mainPhotoName();
+			String newFileName2 = im.morePhotoName();
+
+			if (!fileName1.equals("") && !fileName2.equals("")) {
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
+				String fullFileName1 = path + "/" + fileName1;
+				String fullFileName2 = path + "/" + fileName2;
+				File f1 = new File(fullFileName1);
+				File f2 = new File(fullFileName2);
+				if (f1.exists()) { // ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ Renameï¿½Ñ´ï¿½.
+					File newFile = new File(path + "/" + newFileName1 + ".jpg");
+					f1.renameTo(newFile); // rename...
+				}
+				if (f2.exists()) {
+					File newFile = new File(path + "/" + newFileName2 + ".jpg");
+					f2.renameTo(newFile);
+				}
+			}
+
+			// ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			if (mr.getFile("brMainPhoto") != null
+					&& mr.getFile("brMorePhoto") != null) {
+
+				String completedOption = mr.getParameter("completedOption");
+				int s2 = Integer.parseInt(mr.getParameter("s2"));
+
+				// dtoï¿½ï¿½ï¿½
+				dto.setBrNum(dao.getMaxNum() + 1);
+				dto.setMbId(mr.getParameter("mbId"));
+				dto.setCgNum(s2);
+				dto.setBrSubject(mr.getParameter("brSubject"));
+				dto.setBrMainPhoto(newFileName1 + ".jpg");
+				dto.setBrMorePhoto(newFileName2 + ".jpg");
+				dto.setBrContent(mr.getParameter("brContent"));
+				dto.setBrOptions(completedOption);
+				dto.setBrPrice(Integer.parseInt(mr.getParameter("brPrice")));
+
+				// board ï¿½ï¿½ï¿½Ìºï¿½ insert
+				dao.BoardInsert(dto);
+			}
+
+			url = cp + "/Goods/Main.jsp";
+			resp.sendRedirect(url);
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		} else if (uri.indexOf("GList.do") != -1) {
+
+			int start = Integer.parseInt(req.getParameter("start"));
+			int end = Integer.parseInt(req.getParameter("end"));
+//			int cgNum = Integer.parseInt(req.getParameter("cgNum"));
+			
+			
+			
+			//Ä«ï¿½×°ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+			
+			
+			
+			
+			//board ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+			
+//			if(cgNum!=0){
+//				List<BoardDTO> lists = dao.list(cgNum);
+//				req.setAttribute("lists", lists);
+				
+//			}else if(cgNum==0){
+				List<BoardDTO> lists = dao.list(start, end);
+				req.setAttribute("lists", lists);
+//			}
+			
+
+			String imagePath = cp + "/Product";
+
+			if(1<=start && start<=14){
+				start = 1;
+				end =14;
+			}
+			if(15<= start&& start<=22){
+				start = 15;
+				end = 22;
+			}
+			if(23<=start && start<=30){
+				start = 23;
+				end = 30;
+			}
+			if(31<=start && start<=41){
+				start = 31;
+				end = 41;
+			}
+			if(42<=start && start<=50){
+				start = 42;
+				end = 50;
+			}
+			if(51<=start && start<=58){
+				start = 51;
+				end = 58;
+			}
+			if(59<=start && start<=68){
+				start = 59;
+				end = 68;
+			}
+			if(69<=start && start<=79){
+				start = 69;
+				end = 79;
+			}
+			if(80<=start && start<=90){
+				start = 80;
+				end = 90;
+			}
+			if(91<=start && start<=96){
+				start = 91;
+				end = 96;
+			}
+			if(97<=start && start<=109){
+				start = 97;
+				end = 109;
+			}
+			
+			
+			List<CategoryDTO> cglists = dao.getReadCategory(start, end);
+			req.setAttribute("cglists", cglists);
+			
+			req.setAttribute("imagePath", imagePath);
+			
+
+			url = "/Goods/GList.jsp";// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+			forward(req, resp, url);
+
+			
+			
+			
+		} else if (uri.indexOf("GList_ok.do") != -1) {	
+			
+		
+			int cgNum = Integer.parseInt(req.getParameter("cgNum"));
+			
+			
+			url = "GList.do?start=" + cgNum + "&end=" + cgNum ;
+			resp.sendRedirect(url);
+			
+			
+			
+			
+		} else if (uri.indexOf("GDetail.do") != -1) {
+
+			int brNum = Integer.parseInt(req.getParameter("brNum"));
+
+			// ï¿½Ñ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+			BoardDTO dto = dao.getReadData(brNum);
+			// ï¿½É¼Ç¹è¿­ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+			List<String> op = dto.getBrOptionsList();
+
+			// Ä«ï¿½×°ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+			int cgNum = dto.getCgNum();
+			CategoryDTO cgdto = dao.getReadCategory(cgNum);
+			String category1 = cgdto.getCgCategory1();
+			String category2 = cgdto.getCgCategory2();
+
+			// ï¿½Û¿Ã¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+			String MbId = dto.getMbId();
+
+			// ï¿½ï¿½ï¿½ ï¿½Ñ¸ï¿½Ã£ï¿½ï¿½ ï¿½Þ¼Òµï¿½
+			MemberDTO mbdto = dao.getReadMember(MbId);
+			String nickName = mbdto.getMbNickName();
+
+			
+			dto.setBrContent(dto.getBrContent().replaceAll("\n", "<br/>"));
+			String imagePath = cp + "/Product";
+
+			//ï¿½ï¿½ï¿½
+			List<CommentsDTO> lists = dao.cmList(brNum);
+			List<CommentsDTO> newLists = new ArrayList<CommentsDTO>();
+
+			String[] subject = new String[lists.size()];
+
+			for (int i = 0; i < lists.size(); i++) {
+				CommentsDTO cdto = new CommentsDTO();
+
+				cdto = lists.get(i);
+
+				String[] a = cdto.getCmContent().split("\r\n");
+				subject[i] = a[0];
+				cdto.setCmContent(cdto.getCmContent().replaceAll("\n", "<br/>"));
+				newLists.add(cdto);
+			}
+			
+			req.setAttribute("lists", newLists);
+			req.setAttribute("subject", subject);
+			
+			req.setAttribute("nickName", nickName);
+			req.setAttribute("category1", category1);
+			req.setAttribute("category2", category2);
+			req.setAttribute("op", op);
+			req.setAttribute("imagePath", imagePath);
+			req.setAttribute("dto", dto);
+
+			url = "/Goods/GDetail.jsp";// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+			forward(req, resp, url);
+
+			
+			
+			
+		}else if (uri.indexOf("comments_ok.do") != -1) {
+
+			int brNum = Integer.parseInt(req.getParameter("brNum"));
+			
+			CommentsDTO dto = new CommentsDTO();
+			
+		
+			
+			int cmMaxNum = dao.cmMaxNum();
+			dto.setCmNum(cmMaxNum + 1);
+
+			dto.setBrNum(brNum);
+			dto.setCmContent(req.getParameter("cm_content"));
+			dto.setCmNickName(req.getParameter("cm_nickName"));
+			dto.setCmRating(Integer.parseInt(req.getParameter("cm_rating")));
+
+			dao.cmInsert(dto);
+
+			url = "GDetail.do?brNum=" + brNum;
+			resp.sendRedirect(url);
+
+			
+			
+			
+			
+			
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	}
 
