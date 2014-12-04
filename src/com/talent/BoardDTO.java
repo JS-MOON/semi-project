@@ -22,8 +22,18 @@ public class BoardDTO {
     private int brPrice;
     private String brDate;
     private String mbNickName;
+    private String cgCategory1;
+    
 
-   
+
+	public String getCgCategory1() {
+		return cgCategory1;
+	}
+
+	public void setCgCategory1(String cgCategory1) {
+		this.cgCategory1 = cgCategory1;
+	}
+
 	public String getMbNickName() {
 		return mbNickName;
 	}

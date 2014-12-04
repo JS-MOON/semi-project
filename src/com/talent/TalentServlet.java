@@ -265,7 +265,8 @@ public class TalentServlet extends HttpServlet {
 			url = "MyProfile.do";
 			resp.sendRedirect(url);
 			
-		} else if (uri.indexOf("SellProdReg_ok.do") != -1) {
+			
+		}else if(uri.indexOf("SellProdReg_ok.do") != -1){
 			
 			BoardDTO dto = new BoardDTO();
 			ImageName im = new ImageName();
@@ -322,12 +323,11 @@ public class TalentServlet extends HttpServlet {
 
 			url = cp + "/Goods/Main.jsp";
 			resp.sendRedirect(url);
-<<<<<<< HEAD
+
 			
-=======
 
 
->>>>>>> origin/master
+
 		} else if (uri.indexOf("GList.do") != -1) {
 
 			int start = Integer.parseInt(req.getParameter("start"));

@@ -284,13 +284,7 @@ public class TalentDAO {
 		
 	}
 	
-	public int updateMember(String mbId,String mbPw){
-	
-		
-		int result=0;
-		
-		return result;
-	}
+
 	
 	
 	
@@ -369,9 +363,13 @@ public class TalentDAO {
 		ResultSet rs = null;
 		String sql;
 		try {
-			sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
-			sql += "from board A,member B where A.mb_id=B.mb_id and cg_num>=? and cg_num<=? order by A.br_num desc";
+			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num order by A.br_num desc";
+			
+			/*sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
+			sql += "from board A,member B where A.mb_id=B.mb_id and cg_num>=? and cg_num<=? order by A.br_num desc";*/
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, start);
@@ -382,6 +380,7 @@ public class TalentDAO {
 			while (rs.next()) {
 
 				dto = new BoardDTO();
+				dto.setCgCategory1(rs.getString("cg_category1"));
 				dto.setMbNickName(rs.getString("mb_nickName"));
 				dto.setBrNum(rs.getInt("br_num"));
 				dto.setMbId(rs.getString("mb_id"));
