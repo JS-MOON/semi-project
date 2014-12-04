@@ -159,10 +159,6 @@ public class TalentServlet extends HttpServlet {
 			url = "/My/MyAccount.jsp";
 			forward(req, resp, url);
 			
-		} else if (uri.contains("MyAuth.do")){
-			url = "/My/MyAccount.jsp";
-			forward(req, resp, url);
-			
 		} else if (uri.contains("MyFavority.do")){
 			url = "/My/MyFavority.jsp";
 			forward(req, resp, url);

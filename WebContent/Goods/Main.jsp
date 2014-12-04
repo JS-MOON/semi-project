@@ -57,10 +57,8 @@
                     <div class="pdtWrap">
                         <div class="sellerResume" >
                         <span class="sellingUser">
-                              <a href="../My/MyTimeline.jsp?&ci=xcn4cZTUzhrg9A2grKXne1ye1Jsg1aRCgGSfI6uAY7CWGF57AawRf47sV2FeJxwP">
                                   <img src="../Profile/M00141006995286W/Profile/M00141006995286W.png" alt="" Height=36px  Width=36px />
                                   <span class="user_id">조훈희</span>
-                              </a>
                         </span>
                             <div class="sellerCondition">
                                 <span class="onOff on">ONLINE</span>

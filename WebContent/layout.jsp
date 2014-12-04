@@ -49,7 +49,7 @@
 }
 
 .btnType21 {
-	display: inline-block; #
+	display: inline-block;
 	display: inline;
 	padding: 5px 15px;
 	border: none;
@@ -364,30 +364,30 @@
 						</a>
 						<ul class="searchKeyword">
 							<li><a
-								href='../Goods/GSearchList.jsp?sv=%eb%94%94%ec%9e%90%ec%9d%b8'>디자인</a></li>
+								href='../Goods/GSearchList.do?sv=%eb%94%94%ec%9e%90%ec%9d%b8'>디자인</a></li>
 							<li><a
-								href='../Goods/GSearchList.jsp?sv=%eb%a7%88%ec%88%a0%ea%b3%b5%ec%97%b0'>마술공연</a></li>
-							<li><a href='../Goods/GSearchList.jsp?sv=%ed%8e%b8%ec%a7%80'>편지</a></li>
-							<li><a href='../Goods/GSearchList.jsp?sv=%eb%a1%9c%ea%b3%a0'>로고</a></li>
+								href='../Goods/GSearchList.do?sv=%eb%a7%88%ec%88%a0%ea%b3%b5%ec%97%b0'>마술공연</a></li>
+							<li><a href='../Goods/GSearchList.do?sv=%ed%8e%b8%ec%a7%80'>편지</a></li>
+							<li><a href='../Goods/GSearchList.do?sv=%eb%a1%9c%ea%b3%a0'>로고</a></li>
 							<li><a
-								href='../Goods/GSearchList.jsp?sv=%ec%9e%90%ec%86%8c%ec%84%9c'>자소서</a></li>
+								href='../Goods/GSearchList.do?sv=%ec%9e%90%ec%86%8c%ec%84%9c'>자소서</a></li>
 						</ul>
 					</div>
 					<div class="adBannerWrap">
 						<div class="nav"></div>
 						<ul class="adBanner">
 							<li><a
-								href='../Goods/GDetail.jsp?cd%3dG00141022772706W%26ct%3d1201003'>
+								href='../Goods/GDetail.do?cd%3dG00141022772706W%26ct%3d1201003'>
 									<img src='../Upload/TopBanner/ADTB20141123023114219.png'
 									width="230px" height="75px" alt="" />
 							</a></li>
 							<li><a
-								href='../Goods/GDetail.jsp?cd%3dG00141119690519W%26ct%3d1201008'>
+								href='../Goods/GDetail.do?cd%3dG00141119690519W%26ct%3d1201008'>
 									<img src='../Upload/TopBanner/ADTB20141119044627641.png'
 									width="230px" height="75px" alt="" />
 							</a></li>
 							<li><a
-								href='../Goods/GDetail.jsp?cd%3dG00141027107946W%26ct%3d2101011'>
+								href='../Goods/GDetail.do?cd%3dG00141027107946W%26ct%3d2101011'>
 									<img src='../Upload/TopBanner/ADTB20141123023114219.png'
 									width="230px" height="75px" alt="" />
 							</a></li>
@@ -400,25 +400,25 @@
 			<!-- gnb -->
 			<div id="gnb">
 				<ul class="centered_cont">
-					<li class="m1"><a href="../Goods/GList.jsp?cy=110">그래픽 ·
+					<li class="m1"><a href="../Goods/GList.do?cy=110">그래픽 ·
 							디자인</a></li>
-					<li class="m2"><a href="../Goods/GList.jsp?cy=120">사업 ·
+					<li class="m2"><a href="../Goods/GList.do?cy=120">사업 ·
 							전문가</a></li>
-					<li class="m3"><a href="../Goods/GList.jsp?cy=130">문서 ·
+					<li class="m3"><a href="../Goods/GList.do?cy=130">문서 ·
 							레포트</a></li>
-					<li class="m4"><a href="../Goods/GList.jsp?cy=140">컴퓨터 ·
+					<li class="m4"><a href="../Goods/GList.do?cy=140">컴퓨터 ·
 							IT</a></li>
-					<li class="m5"><a href="../Goods/GList.jsp?cy=150">번역 ·
+					<li class="m5"><a href="../Goods/GList.do?cy=150">번역 ·
 							외국어</a></li>
-					<li class="m6"><a href="../Goods/GList.jsp?cy=160">음악 ·
+					<li class="m6"><a href="../Goods/GList.do?cy=160">음악 ·
 							동영상</a></li>
-					<li class="m7"><a href="../Goods/GList.jsp?cy=170">행사 · 공연</a></li>
-					<li class="m8"><a href="../Goods/GList.jsp?cy=180">노하우 ·
+					<li class="m7"><a href="../Goods/GList.do?cy=170">행사 · 공연</a></li>
+					<li class="m8"><a href="../Goods/GList.do?cy=180">노하우 ·
 							상담</a></li>
-					<li class="m9"><a href="../Goods/GList.jsp?cy=190">생활서비스</a></li>
-					<li class="m10"><a href="../Goods/GList.jsp?cy=200">여행 ·
+					<li class="m9"><a href="../Goods/GList.do?cy=190">생활서비스</a></li>
+					<li class="m10"><a href="../Goods/GList.do?cy=200">여행 ·
 							가이드</a></li>
-					<li class="m11"><a href="../Goods/GList.jsp?cy=210">핸드메이드</a></li>
+					<li class="m11"><a href="../Goods/GList.do?cy=210">핸드메이드</a></li>
 					<li class="m12"><a href="javascript:alert('서비스 준비중 입니다');">프리미엄
 							재능관</a></li>
 				</ul>
