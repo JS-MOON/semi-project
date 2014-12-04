@@ -211,7 +211,7 @@ public class TalentServlet extends HttpServlet {
 			url = "/My/SellProdReg.jsp";
 			forward(req, resp, url);
 
-		}
+		}else if(uri.contains("PhotoUpload_ok.do"))
 
 	}
 
