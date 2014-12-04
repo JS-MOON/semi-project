@@ -52,9 +52,6 @@
         <div class="pdtListWrap">
             <div class="pdtList">
                 <div id="ContentPlaceHolder1_WUC_My_FavoriteList_UpdatePanel1">
-
-
-
                 </div>
             </div>
         </div>

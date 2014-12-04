@@ -1,30 +1,24 @@
 package com.event;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 public class ContextListenerTest implements ServletContextListener{
 	
-	//Web ¼­¹ö°¡ ½ÇÇàµÇ°Å³ª Á¾·áµÉ¶§
+	//Web ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½É¶ï¿½
 
 	@Override
 	public void contextDestroyed(ServletContextEvent evt) {
 		
-		System.out.println("¼­¹ö Á×´Â´Ù....");
+		System.out.println("ì„œë²„ ì—°ê²°...");
 		
 	}
 
 	@Override
 	public void contextInitialized(ServletContextEvent evt) {
 		
-		System.out.println("¼­¹ö »ì¾Æ³­´Ù....");
-		
-		ServletContext sc = evt.getServletContext();
-		
-		//¾î¶² ¼Ò½ºÄÚµå¿¡¼­µµ Á¢±ÙÀÌ °¡´ÉÇÑ µ¥ÀÌÅÍ
-		//¸ğµç servlet,JSP¿¡¼­ Á¢±ÙÀÌ °¡´É->${name}
-		sc.setAttribute("name", "³­ ´©±¸µçÁö ´Ù º¼¼ö ÀÖ´Ù.");
+		System.out.println("ì„œë²„ ì¢…ë£Œ....");
+
 	}
 	
 	

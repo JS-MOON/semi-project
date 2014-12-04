@@ -36,7 +36,7 @@
             <div class="profile_img">
                 <span class="profile_thumb">
                     <img src="../resources/images/mypage/img_profile_img_blank_120x120.png" alt="" /></span>
-                <a href="javascript:popUP('/Comm/PhotoUpload.jsp','UploadProfilePhoto',50,50,200,100,'no','no','no','no','no');" class="replace">Replace</a>
+                <a href="javascript:popUP('../Comm/PhotoUpload.jsp','UploadProfilePhoto',50,50,200,100,'no','no','no','no','no');" class="replace">Replace</a>
             </div>
             <ul class="i_r">
                 <li>

@@ -63,9 +63,9 @@ public class TalentServlet extends HttpServlet {
 			String str = "";
 
 			if (dao.selectData(mbId) != null) {
-				str = "���̵� �����մϴ�.";
+				str = "아이디가 존재합니다.";
 			} else if (!mbPw1.equals(mbPw2)) {
-				str = "��й�ȣ�� ��ġ���� �ʽ��ϴ�.";
+				str = "비밀번호가 일치하지 않습니다.";
 			} else {
 
 				MemberDTO dto = new MemberDTO();
@@ -74,7 +74,8 @@ public class TalentServlet extends HttpServlet {
 				dto.setMbPw(mbPw1);
 				dao.insertData(dto);
 
-				str = "������ �Ϸ�Ǿ����ϴ�.";
+
+				str = "가입이 완료되었습니다.";
 			}
 
 			req.setAttribute("str", str);
@@ -103,10 +104,11 @@ public class TalentServlet extends HttpServlet {
 			MemberDTO dto = dao.getReadMember(mbId);
 
 			if (dto == null) {
-				str = "���̵� �����ϴ�.";
+
+				str = "아이디가 없습니다.";
 
 			} else if (!dto.getMbPw().equals(mbPw)) {
-				str = "��й�ȣ�� Ʋ�Ƚ��ϴ�.";
+				str = "비밀번호가 틀렸습니다.";
 
 			} else {
 				HttpSession session = req.getSession(true);
@@ -142,7 +144,7 @@ public class TalentServlet extends HttpServlet {
 
 			String str = "";
 
-			str = "�α׾ƿ� �Ǽ̽��ϴ�.";
+			str = "로그아웃 되셨습니다.";
 
 			req.setAttribute("str", str);
 			
@@ -153,7 +155,7 @@ public class TalentServlet extends HttpServlet {
 			forward(req, resp, url);
 
 			
-		//My	
+			//My	
 		} else if (uri.contains("MyAccount.do")) {
 			
 			url = "/My/MyAccount.jsp";
@@ -172,41 +174,46 @@ public class TalentServlet extends HttpServlet {
 			forward(req, resp, url);
 			
 		} else if (uri.contains("MyMistus.do")) {
+			
 			url = "/My/MyMistus.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("MyOrderMng.do")) {
+			
 			url = "/My/MyOrderMng.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("MyPoint.do")) {
+			
 			url = "/My/MyPoint.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("MyProfile.do")) {
+			
 			url = "/My/MyProfile.jsp";
 			forward(req, resp, url);
-		} else if (uri.contains("MySellIncome.do")) {
-			url = "/My/MySellIncome.jsp";
+			
+		} else if (uri.contains("SellIncome.do")) {
+			
+			url = "/My/SellIncome.jsp";
 			forward(req, resp, url);
-		} else if (uri.contains("MySellMng.do")) {
-			url = "/My/MySellMng.jsp";
+			
+		} else if (uri.contains("SellMng.do")) {
+			
+			url = "/My/SellMng.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("SellProdListMy.do")) {
+			
 			url = "/My/SellProdListMy.jsp";
 			forward(req, resp, url);
+			
 		} else if (uri.contains("SellProdReg.do")) {
-			url = "/My/SellProdReg.jsp";
-			forward(req, resp, url);
-		}if (uri.indexOf("SellProdReg.do") != -1) {
 
 			
 			url = "/My/SellProdReg.jsp";// �����ּ�
 			forward(req, resp, url);
 
-			
-			
-			
-			
-			
-			
 			
 		}else if (uri.indexOf("SellProdReg.do") != -1) {
 
@@ -458,22 +465,9 @@ public class TalentServlet extends HttpServlet {
 			url = "GDetail.do?brNum=" + brNum;
 			resp.sendRedirect(url);
 
-			
-			
-			
-			
+		}else if(uri.contains("PhotoUpload_ok.do")) {
 			
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 	}
 
