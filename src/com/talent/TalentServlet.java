@@ -1,5 +1,7 @@
 package com.talent;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.util.DBConn;
 import com.util.FileManager;
 
@@ -49,6 +51,10 @@ public class TalentServlet extends HttpServlet {
 		String root = getServletContext().getRealPath("/");
 		String path = root + File.separator + "pds" + File.separator
 				+ "imageFile";
+
+		File dir = new File(path);
+		if(!dir.exists())
+			dir.mkdirs();
 
 		if (uri.contains("Register.do")) {
 
@@ -188,6 +194,20 @@ public class TalentServlet extends HttpServlet {
 			
 		} else if (uri.contains("MyProfile.do")) {
 			
+			String imagePath = cp + "/pds/imageFile";
+
+			
+			HttpSession session = req.getSession();
+			
+			MemberSession mbs =
+					(MemberSession)session.getAttribute("session");
+			
+			MemberDTO dto = dao.getReadMember(mbs.getMbId());
+			
+			req.setAttribute("dto", dto);	
+			req.setAttribute("imagePath", imagePath);
+ 			
+			
 			url = "/My/MyProfile.jsp";
 			forward(req, resp, url);
 			
@@ -211,7 +231,42 @@ public class TalentServlet extends HttpServlet {
 			url = "/My/SellProdReg.jsp";
 			forward(req, resp, url);
 
-		}else if(uri.contains("PhotoUpload_ok.do"))
+		}else if(uri.contains("PhotoUpload_ok.do")){
+			
+			
+//			String mbId = req.getParameter("mbId");
+			
+			HttpSession session = req.getSession();
+			
+			MemberSession mbs =
+					(MemberSession)session.getAttribute("session");
+		
+			
+			String encType = "UTF-8";
+			int maxSize = 5*1024*1024;
+			
+			MultipartRequest mr =
+					new MultipartRequest(req, path, maxSize, encType,
+							new DefaultFileRenamePolicy());
+			
+			if(mr.getFile("mbPic")!=null){
+		
+				String mbPic = mr.getFilesystemName("mbPic");
+								
+				dao.updateMember(mbPic,mbs.getMbId());
+				
+			}
+			
+			url = "MyProfile.do";
+			resp.sendRedirect(url);
+			
+		}else if(uri.contains("UpdateMember.do")){
+			
+			
+			
+		}
+			
+			
 
 	}
 

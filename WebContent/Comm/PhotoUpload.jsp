@@ -16,8 +16,11 @@
 <form action="PhotoUpload_ok.do" name="myForm" method="post" enctype="multipart/form-data">
 
 <table>
-<tr><td><input type="file" size="15"></td></tr>
-<tr><td><input type="submit" value="등록" ></td></tr>
+
+<tr><td><input type="file" size="15" name="mbPic"/></td></tr>
+<%-- <tr><td><input type="hidden" value="${sessionScope.session.mbId}" name="mbId"/></td></tr> --%> 
+<tr><td><input type="submit" value="등록"/></td></tr>
+
 
 </table>
 
