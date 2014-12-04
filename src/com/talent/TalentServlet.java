@@ -303,8 +303,9 @@ public class TalentServlet extends HttpServlet {
 			url = "MyProfile.do";
 			resp.sendRedirect(url);
 			
-			
+
 		} else if (uri.indexOf("SellProdReg_ok.do") != -1) {
+
 			
 			BoardDTO dto = new BoardDTO();
 			ImageName im = new ImageName();

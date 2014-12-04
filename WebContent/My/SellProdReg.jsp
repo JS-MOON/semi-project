@@ -203,7 +203,7 @@
     
 	function sellIt() {
 		
-		var f = document.myForm;
+		var f = document.sellForm;
 		
 		var optionsList = document.getElementsByName("options");
 		var pricesList = document.getElementsByName("prices");
