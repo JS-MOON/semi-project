@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 public class TalentDAO {
 
 	private Connection conn;
@@ -250,6 +252,44 @@ public class TalentDAO {
 		
 		return result;
 		
+	}
+	
+	//프로필사진업로드(update)
+	public int updateMember(String mbPic,String mbId){
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			System.out.println(mbPic);
+			System.out.println(mbId);
+			
+			sql = "update member set mb_pic=? where mb_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mbPic);
+			pstmt.setString(2, mbId);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+		
+	}
+	
+	public int updateMember(String mbId,String mbPw){
+	
+		
+		int result=0;
+		
+		return result;
 	}
 	
 	
@@ -636,7 +676,7 @@ public class TalentDAO {
 	// comments
 	public List<CommentsDTO> cmList(int brNum) {
 
-		List<CommentsDTO> lists = new ArrayList<>();
+		List<CommentsDTO> lists = new ArrayList<CommentsDTO>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;

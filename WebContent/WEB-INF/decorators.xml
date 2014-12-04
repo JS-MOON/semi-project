@@ -3,18 +3,15 @@
 <decorators defaultdir="/">
     <decorator name="main" page="layout.jsp">
         <pattern>/Goods/*</pattern>
-    </decorator>
-
-    <decorator name="my" page="layout_my.jsp">
-        <pattern>/My/*</pattern>
-    </decorator>
-
-    <decorator name="blank" page="layout_cs.jsp">
         <pattern>/CS/*</pattern>
         <pattern>/Etc/*</pattern>
         <pattern>/DisplayAD/*</pattern>
         <pattern>/Chat/*</pattern>
         <pattern>/Register/*</pattern>
+    </decorator>
+
+    <decorator name="my" page="layout_my.jsp">
+        <pattern>/My/*</pattern>
     </decorator>
 
     <excludes>

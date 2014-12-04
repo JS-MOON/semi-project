@@ -10,13 +10,6 @@
 <html>
 <head>
 <title></title>
-
-<script type="text/javascript">
-
-
-
-</script>
-
 </head>
 <body>
 	<div id="container">
