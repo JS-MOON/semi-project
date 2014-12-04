@@ -53,16 +53,25 @@ public class TalentServlet extends HttpServlet {
 
 		String root = getServletContext().getRealPath("/");
 		String path = root + "Product";
-
+		
+		String myPath = root + File.separator + "pds" +
+				File.separator + "imageFile";
+		
 		File dir = new File(path);
 		if(!dir.exists())
 			dir.mkdirs();
+		
+		File myDir = new File(myPath);
+		if(!myDir.exists())
+			myDir.mkdirs();
 
 		if (uri.contains("Register.do")) {
 
 			String mbId = req.getParameter("mbId");
 			String mbPw1 = req.getParameter("mbPw1");
 			String mbPw2 = req.getParameter("mbPw2");
+			String mbPic = "img_profile_img_blank_120x120.png";
+			
 
 			String str = "";
 
@@ -76,6 +85,7 @@ public class TalentServlet extends HttpServlet {
 
 				dto.setMbId(mbId);
 				dto.setMbPw(mbPw1);
+				dto.setMbPic(mbPic);
 				dao.insertData(dto);
 
 
@@ -251,7 +261,7 @@ public class TalentServlet extends HttpServlet {
 			int maxSize = 5*1024*1024;
 			
 			MultipartRequest mr =
-					new MultipartRequest(req, path, maxSize, encType,
+					new MultipartRequest(req, myPath, maxSize, encType,
 							new DefaultFileRenamePolicy());
 			
 			if(mr.getFile("mbPic")!=null){
@@ -262,11 +272,29 @@ public class TalentServlet extends HttpServlet {
 				
 			}
 			
+			url = "complete.jsp";
+			forward(req, resp, url);
+			
+		} else if (uri.indexOf("UpdateMyprofile.do") != -1) {
+			
+			MemberDTO dto = new MemberDTO();
+			
+			String mbId = req.getParameter("mbId");
+			String mbNickName = req.getParameter("mbNickName");
+			String mbAbout = req.getParameter("mbAbout");
+			
+			dto.setMbId(mbId);
+			dto.setMbNickName(mbNickName);
+			dto.setMbAbout(mbAbout);
+			
+			dao.updateMember(dto);
+			
 			url = "MyProfile.do";
 			resp.sendRedirect(url);
 			
-			
-		}else if(uri.indexOf("SellProdReg_ok.do") != -1){
+
+		} else if (uri.indexOf("SellProdReg_ok.do") != -1) {
+
 			
 			BoardDTO dto = new BoardDTO();
 			ImageName im = new ImageName();

@@ -15,13 +15,14 @@
 </head>
 <body>
 
-<form method="post" action="./Register_ok.do" name="myForm">
+<form method="post" action="./Register_ok.do" name="goForm">
 </form>
+
 <%
     out.print("<script language=\"javascript\">\n" +
             "     window.onload = function() {\n" +
             "         alert(\"" + request.getAttribute("str") +  "\");\n" +
-            "         document.myForm.submit();\n" +
+            "         document.goForm.submit();\n" +
             "    }\n" +
             "</script>\n");
 %>

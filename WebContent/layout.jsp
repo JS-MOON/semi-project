@@ -83,9 +83,9 @@
 				$('.utilMenu').addClass('hidden');
 			}
 
-			if (document.getElementById("str").value !== "") {
+			/* if (document.getElementById("str").value !== "") {
 				alert(str);
-			}
+			} */
 
 		});
 	</script>
@@ -251,7 +251,7 @@
 
 <input id="sessionId" type="hidden" name="sessionId"
 	   value="${sessionScope.session.mbId}" />
-<input id="str" type="hidden" name="str" value="${str }" />
+<%-- <input id="str" type="hidden" name="str" value="${str }" /> --%>
 
 
 <div id="wrapper">
@@ -315,7 +315,7 @@
 							<div class="innerWrap">
 								<ul class="list1">
 									<li><a href="../My/MyProfile.do">프로필 관리</a></li>
-									<li><a href="../My/MyAuth.do">계정 관리</a></li>
+									<li><a href="../My/MyAccount.do">계정 관리</a></li>
 								</ul>
 								<ul class="list2">
 									<li class="m1"><a href="../My/SellProdReg.do">재능 등록</a></li>

@@ -93,28 +93,28 @@
                         <div class="td" id="radioBtn">
                             <ul>
                                 <li>
-                                    <input value="causeBy1" name="" type="radio" class="input-radio" checked="checked" />
+                                    <input value="causeBy1" name="causeBy" type="radio" class="input-radio" checked="checked" />
                                     <label class="label">다른 사용자명으로 사용하기 위해서</label>
                                 </li>
                                 <li>
-                                    <input value="causeBy2" name="" type="radio" class="input-radio" />
+                                    <input value="causeBy2" name="causeBy" type="radio" class="input-radio" />
                                     <label class="label">사용빈도가 낮고, 개인정보 유출이 우려되어</label>
                                 </li>
                                 <li>
-                                    <input value="causeBy3" name="" type="radio" class="input-radio" />
+                                    <input value="causeBy3" name="causeBy" type="radio" class="input-radio" />
                                     <label class="label">사이트 이용시 장애가 많아서</label>
                                 </li>
                                 <li>
-                                    <input value="causeBy4" name="" type="radio" class="input-radio" />
+                                    <input value="causeBy4" name="causeBy" type="radio" class="input-radio" />
                                     <label class="label">서비스의 질에 대한 불만이 있어서</label>
                                 </li>
                                 <li>
-                                    <input value="causeBy5" name="" type="radio" class="input-radio" />
+                                    <input value="causeBy5" name="causeBy" type="radio" class="input-radio" />
                                     <label class="label">사이트 이용시 고객응대가 나빠서</label>
                                 </li>
                                 <li>
-                                    <input value="causeBy6" name="" type="radio" class="input-radio" />
-                                    <input name="" type="text" maxlength="100" class="input-text" style="width: 240px;" />
+                                    <input value="causeBy6" name="causeBy" type="radio" class="input-radio" />
+                                    <input name="causeByManual" type="text" maxlength="100" class="input-text" style="width: 240px;" />
                                 </li>
                             </ul>
                         </div>

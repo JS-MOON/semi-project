@@ -25,13 +25,13 @@ public class TalentDAO {
 
 		try {
 
-			sql = "insert into member(mb_id,mb_pw";
-			sql += ") values(?,?)";
+			sql = "insert into member(mb_id,mb_pw,mb_pic) values(?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, dto.getMbId());
 			pstmt.setString(2, dto.getMbPw());
+			pstmt.setString(3, dto.getMbPic());
 
 			result = pstmt.executeUpdate();
 
@@ -80,47 +80,7 @@ public class TalentDAO {
 		return dto;
 	}
 
-	// 전체 데이타 출력
-	public List<TalentDTO> getList() {
-
-		List<TalentDTO> lists = new ArrayList<TalentDTO>();
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-
-		try {
-
-			sql = "select mb_id,mb_pw,mb_nickName,mb_tel,mb_pic,mb_about from member";
-
-			pstmt = conn.prepareStatement(sql);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				TalentDTO dto = new TalentDTO();
-
-				dto.setMb_id(rs.getString("mb_id"));
-				dto.setMb_pw(rs.getString("mb_pw"));
-				dto.setMb_nickName(rs.getString("mb_nickName"));
-				dto.setMb_tel(rs.getString("mb_tel"));
-				dto.setMb_pic(rs.getString("mb_pic"));
-				dto.setMb_about(rs.getString("mb_about"));
-
-				lists.add(dto);
-
-			}
-			pstmt.close();
-			rs.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		return lists;
-
-	}
-
+	
 	public String login(String mb_id) {
 
 		String mb_pw_r = "";
@@ -152,36 +112,6 @@ public class TalentDAO {
 		return mb_pw_r;
 	}
 
-	// 회원 정보 수정
-
-	public int updateMember(TalentDTO dto) {
-
-		PreparedStatement pstmt = null;
-		String sql;
-		int result = 0;
-
-		try {
-
-			sql = "update member set mb_pw=?,mb_tel=?,mb_pic=?,mb_about=?,mb_nickName=? where mb_id=?";
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, dto.getMb_pw());
-			pstmt.setString(2, dto.getMb_tel());
-			pstmt.setString(3, dto.getMb_pic());
-			pstmt.setString(4, dto.getMb_about());
-			pstmt.setString(5, dto.getMb_nickName());
-			pstmt.setString(6, dto.getMb_id());
-
-			result = pstmt.executeUpdate();
-
-			pstmt.close();
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		return result;
-	}
 
 	public MemberDTO getReadMember(String mbId) {
 
@@ -263,9 +193,6 @@ public class TalentDAO {
 		
 		try {
 			
-			System.out.println(mbPic);
-			System.out.println(mbId);
-			
 			sql = "update member set mb_pic=? where mb_id=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -283,10 +210,34 @@ public class TalentDAO {
 		return result;
 		
 	}
-	
 
-	
-	
+	public int updateMember(MemberDTO dto){
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update member set mb_nickName=?,mb_about=? where mb_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getMbNickName());
+			pstmt.setString(2, dto.getMbAbout());
+			pstmt.setString(3, dto.getMbId());
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return result;	
+	}
+
 	
 	
 	

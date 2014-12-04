@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<form action="PhotoUpload_ok.do" name="myForm" method="post" enctype="multipart/form-data">
+<form action="PhotoUpload_ok.do" name="uploadForm" method="post" enctype="multipart/form-data">
 
 <table>
 
