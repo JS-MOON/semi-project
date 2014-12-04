@@ -414,12 +414,16 @@ public class TalentServlet extends HttpServlet {
 			String[] subject = new String[lists.size()];
 
 			for (int i = 0; i < lists.size(); i++) {
-				CommentsDTO cdto = new CommentsDTO();
+				CommentsDTO cdto = lists.get(i);
 
-				cdto = lists.get(i);
+				if(cdto.getCmContent().contains("\r\n")) {
+					String[] a = cdto.getCmContent().split("\r\n");
+					subject[i] = a[0];
+				} else {
+					String a = cdto.getCmContent();
+					subject[i] = a;
+				}
 
-				String[] a = cdto.getCmContent().split("\r\n");
-				subject[i] = a[0];
 				cdto.setCmContent(cdto.getCmContent().replaceAll("\n", "<br/>"));
 				newLists.add(cdto);
 			}
@@ -437,9 +441,6 @@ public class TalentServlet extends HttpServlet {
 			url = "/Goods/GDetail.jsp";// �����ּ�
 			forward(req, resp, url);
 
-			
-			
-			
 		}else if (uri.indexOf("comments_ok.do") != -1) {
 
 			int brNum = Integer.parseInt(req.getParameter("brNum"));
