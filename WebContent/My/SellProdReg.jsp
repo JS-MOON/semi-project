@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +33,211 @@
         }
         return true;
     }
+ 
+    
+    function option(){
+    	
+    	
+    	
+    	var s1 = document.myForm.s1;
+    	var s2 = document.myForm.s2;
+    	
+    	while (s2.length != 0) {
+			s2.options.remove(0);
+		}
+    	
+    	if(s1.value == "110") {
+   		  s2.options.add(new Option("도면/3D", "1"));
+   		  s2.options.add(new Option("로고/BI/CI디자인","2"));
+   		  s2.options.add(new Option("만화/웹툰", "3"));
+   		  s2.options.add(new Option("명함", "4"));
+   		  s2.options.add(new Option("배너/상세페이지","5"));
+   		  s2.options.add(new Option("블로그/카페/웹", "6"));
+   		  s2.options.add(new Option("사진/포토샵", "7"));
+   		  s2.options.add(new Option("일러스트/그림", "8"));
+   		  s2.options.add(new Option("전단지/홍보물", "9"));
+   		  s2.options.add(new Option("캐리커쳐/인물", "10"));
+   		  s2.options.add(new Option("캐릭터/아이콘", "11"));
+   		  s2.options.add(new Option("캘리그라피", "12"));
+   		  s2.options.add(new Option("POP", "13"));
+   		  s2.options.add(new Option("PPT/템플릿", "14"));
+    	}
+    	
+    	if(s1.value == "120") {
+  		  s2.options.add(new Option("노하우/상담", "15"));
+  		  s2.options.add(new Option("마케팅","16"));
+  		  s2.options.add(new Option("법률/법무", "17"));
+  		  s2.options.add(new Option("사업/컨설팅", "18"));
+  		  s2.options.add(new Option("사업계획","19"));
+  		  s2.options.add(new Option("세무/회계사", "20"));
+  		  s2.options.add(new Option("투자/금융", "21"));
+  		  s2.options.add(new Option("특허/변리사", "22"));
+  		}
+    	
+    	if(s1.value == "130") {
+  		  s2.options.add(new Option("교정/교열", "23"));
+  		  s2.options.add(new Option("독후감/서핑","24"));
+  		  s2.options.add(new Option("리서치/자료수집", "25"));
+  		  s2.options.add(new Option("문서 레포트", "26"));
+  		  s2.options.add(new Option("사업계획/제안서","27"));
+  		  s2.options.add(new Option("엑셀/통계", "28"));
+  		  s2.options.add(new Option("워드/타이핑", "29"));
+  		  s2.options.add(new Option("자기소개서/이력서", "30"));
+	  	}
+  	
+    	if(s1.value == "140") {
+  		  s2.options.add(new Option("매크로/엑셀", "31"));
+  		  s2.options.add(new Option("모바일웹","32"));
+  		  s2.options.add(new Option("안드로이드", "33"));
+  		  s2.options.add(new Option("워드프레스", "34"));
+  		  s2.options.add(new Option("원격수리/최적화","35"));
+  		  s2.options.add(new Option("응용프로그래밍", "36"));
+  		  s2.options.add(new Option("컴퓨터IT", "37"));
+  		  s2.options.add(new Option("플래시/스크립트", "38"));
+  		  s2.options.add(new Option("홈페이지/웹", "39"));
+  		  s2.options.add(new Option("IOS", "40"));
+  		  s2.options.add(new Option("PC/노트북", "41"));
+    	}
+    	
+    	if(s1.value == "150") {
+   		  s2.options.add(new Option("독일어번역", "42"));
+   		  s2.options.add(new Option("러시아번역","43"));
+   		  s2.options.add(new Option("스페인어번역", "44"));
+   		  s2.options.add(new Option("영어번역", "45"));
+   		  s2.options.add(new Option("외국어/기타","46"));
+   		  s2.options.add(new Option("외국어교육", "47"));
+   		  s2.options.add(new Option("일본어번역", "48"));
+   		  s2.options.add(new Option("중국어번역", "49"));
+   		  s2.options.add(new Option("프랑스어번역", "50"));
+      	}
+    	
+    	if(s1.value == "160") {
+  		  s2.options.add(new Option("내래이션/성우", "51"));
+  		  s2.options.add(new Option("노래/댄스","52"));
+  		  s2.options.add(new Option("악보제작", "53"));
+  		  s2.options.add(new Option("애니메이션", "54"));
+  		  s2.options.add(new Option("영상제작/편집","55"));
+  		  s2.options.add(new Option("음악레슨", "56"));
+  		  s2.options.add(new Option("음악편집/녹음", "57"));
+  		  s2.options.add(new Option("작곡/MR/작사", "58"));
+  		 
+    	}
+    	
+    	if(s1.value == "170") {
+   		  s2.options.add(new Option("강사섭외", "59"));
+   		  s2.options.add(new Option("댄스공연","60"));
+   		  s2.options.add(new Option("마술공연", "61"));
+   		  s2.options.add(new Option("모델/피팅", "62"));
+   		  s2.options.add(new Option("어린이행사","63"));
+   		  s2.options.add(new Option("역활대행", "64"));
+   		  s2.options.add(new Option("축가/연주", "65"));
+   		  s2.options.add(new Option("하객대행", "66"));
+   		  s2.options.add(new Option("행사도우미", "67"));
+   		  s2.options.add(new Option("MC/사회", "68"));
+        }
+    	
+    	if(s1.value == "180") {
+   		  s2.options.add(new Option("고민상담", "69"));
+   		  s2.options.add(new Option("심리상담","70"));
+   		  s2.options.add(new Option("연애상담", "71"));
+   		  s2.options.add(new Option("요리", "72"));
+   		  s2.options.add(new Option("유학/해외생활","73"));
+   		  s2.options.add(new Option("인생/경험", "74"));
+   		  s2.options.add(new Option("입시노하우", "75"));
+   		  s2.options.add(new Option("직업/진로", "76"));
+   		  s2.options.add(new Option("창업/사업", "77"));
+   		  s2.options.add(new Option("투자/재테크", "78"));
+   		  s2.options.add(new Option("학습/학교생활", "79"));
+        }
+    	
+    	if(s1.value == "190") {
+   		  s2.options.add(new Option("건강/다이어트", "80"));
+   		  s2.options.add(new Option("게임","81"));
+   		  s2.options.add(new Option("노무/수리", "82"));
+   		  s2.options.add(new Option("미용/스타일링", "83"));
+   		  s2.options.add(new Option("사주/운세","84"));
+   		  s2.options.add(new Option("생활서비스", "85"));
+   		  s2.options.add(new Option("심부름/배달", "86"));
+   		  s2.options.add(new Option("연애/이벤트", "87"));
+   		  s2.options.add(new Option("온라인교습", "88"));
+   		  s2.options.add(new Option("재미", "89"));
+   		  s2.options.add(new Option("청소/이사", "90"));
+        }
+    	
+    	if(s1.value == "200") {
+     		  s2.options.add(new Option("게스트하우스", "91"));
+     		  s2.options.add(new Option("국내여행","92"));
+     		  s2.options.add(new Option("제주여행", "93"));
+     		  s2.options.add(new Option("캠핑가이드", "94"));
+     		  s2.options.add(new Option("항공권","95"));
+     		  s2.options.add(new Option("행외여행", "96"));
+        }
+    	
+    	if(s1.value == "210") {
+   		  s2.options.add(new Option("도예/공예", "97"));
+   		  s2.options.add(new Option("미술/예술품","98"));
+   		  s2.options.add(new Option("생활용품", "99"));
+   		  s2.options.add(new Option("식품/농작물", "100"));
+   		  s2.options.add(new Option("아이디어제품","101"));
+   		  s2.options.add(new Option("액세서리/쥬얼리", "102"));
+   		  s2.options.add(new Option("옷/패션잡화", "103"));
+   		  s2.options.add(new Option("웨딩","104"));
+   		  s2.options.add(new Option("이벤트용", "105"));
+   		  s2.options.add(new Option("인테리어소품", "106"));
+   		  s2.options.add(new Option("천연제품","107"));
+   		  s2.options.add(new Option("카드/문구", "108"));
+   		  s2.options.add(new Option("Wedding the M", "109"));
+      }
+    
+
+    	
+    	
+    }
+ 
+    
+    
+    
+    
+    
+    
+    
+	function sellIt() {
+		
+		var f = document.myForm;
+		
+		var optionsList = document.getElementsByName("options");
+		var pricesList = document.getElementsByName("prices");
+		var option = "";
+        
+		//옵션1$추가금액1  & 옵션2$추가금액2 
+        for(var i=0;i<optionsList.length;i++) {
+        	if(option !== "" && optionsList[i].value!=="") {
+        		option += "&";
+        	}
+        	
+            if (optionsList[i].value!=="") {
+                option += optionsList[i].value;
+                option += "/";
+                option += pricesList[i].value;
+            }
+        }
+        
+        f.completedOption.value = option;
+		alert(f.completedOption.value);
+		alert(f.s1.value +" : "+ f.s2.value);
+		
+        f.action = "SellProdReg_ok.do";
+        f.submit();
+		
+	}
+	
+	
+	
+	
 </script>
+
+
+<form action="" name="myForm" method="post" enctype="multipart/form-data">
 
 <div class="primaryContents registerTalent">
     <!-- 마이페이지lnb -->
@@ -43,12 +251,43 @@
 
     <!-- 내용 -->
     <div class="contBlock">
-        <div id="ContentPlaceHolder1_WUC_My_AblityEdit1_UpdatePanel1">
+        <div>
 
             <h4>카테고리</h4>
             <div class="settingOption category">
+				
+               <select name="s1" onchange="option()" class="select" style="width:180px;width: 180px;">
+               		<option value="0">선택하세요 </option>
+               		<option value="110">그래픽 디자인</option>
+               		<option value="120">사업 전문가</option>
+                    <option value="130">문서 레포트</option>
+                    <option value="140">컴퓨터 IT</option>
+                    <option value="150">번역 외국어</option>
+                    <option value="160">음악 동영상</option>
+                    <option value="170">행사 공연</option>
+                    <option value="180">노하우 상담</option>
+                    <option value="190">생활서비스</option>
+                    <option value="200">여행 가이드</option>
+                    <option value="210">핸드메이드</option>
 
-                <select name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$ddl_main" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$ddl_main\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_WUC_My_AblityEdit1_ddl_main" class="select" style="width:180px;width: 180px;">
+               </select>
+               
+               <select name="s2" class="select" style="width:180px;width: 180px;">
+               		<option value="0">선택하세요</option>
+               
+               </select>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               <!--  <select name="category1" onchange="javascript:option();" class="select" style="width:180px;width: 180px;">
                     <option selected="selected" value="110">그래픽 디자인</option>
                     <option value="120">사업 전문가</option>
                     <option value="130">문서 레포트</option>
@@ -60,68 +299,50 @@
                     <option value="190">생활서비스</option>
                     <option value="200">여행 가이드</option>
                     <option value="210">핸드메이드</option>
-
                 </select>
 
-
-                <select name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$ddl_sub" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$ddl_sub\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_WUC_My_AblityEdit1_ddl_sub" class="select" style="width:250px;width: 250px;">
-                    <option selected="selected" value="1101011">도면/3D</option>
-                    <option value="1101001">로고/BI/CI디자인</option>
-                    <option value="1101008">만화/웹툰</option>
-                    <option value="1101012">명함</option>
-                    <option value="1101005">배너/상세페이지</option>
-                    <option value="1101007">블로그/카페/웹</option>
-                    <option value="1101003">사진/포토샵</option>
-                    <option value="1101009">일러스트/그림</option>
-                    <option value="1101006">전단지/홍보물</option>
-                    <option value="1101004">캐리커쳐/인물</option>
+				
+                <select name="category2"  class="select" style="width:250px;width: 250px;">
+                    <option selected="selected" value="1">도면/3D</option>
+                    <option value="2">로고/BI/CI디자인</option>
+                    <option value="3">만화/웹툰</option>
+                    <option value="4">명함</option>
+                    <option value="5">배너/상세페이지</option>
+                    <option value="6">블로그/카페/웹</option>
+                    <option value="7">사진/포토샵</option>
+                    <option value="8">일러스트/그림</option>
+                    <option value="9">전단지/홍보물</option>
+                    <option value="10">캐리커쳐/인물</option>
                     <option value="1101010">캐릭터/아이콘</option>
                     <option value="1101002">캘리그라피</option>
                     <option value="1101013">POP</option>
                     <option value="1101014">PPT/템플릿</option>
 
-                </select>
+                </select> -->
 
             </div>
 
-            <h4>관련재능의 가격</h4>
-            <div class="settingOption price">
-                <label for="">최고가</label>
-
-                <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_maxPrice" type="text" value="101010000" readonly="readonly" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_maxPrice" class="input-text" style="width:110px;width: 110px;" />
-
-                <label for="">최저가</label>
-
-                <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_minPrice" type="text" value="1000" readonly="readonly" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_minPrice" class="input-text" style="width:110px;width: 110px;" />
-
-
-                <label for="" class="">선호가</label>
-
-                <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_bestPrice" type="text" value="100000" readonly="readonly" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_bestPrice" class="input-text" style="width:110px;width: 110px;" />
-
-            </div>
+			
+            
+            	 <input name="mbId" type="hidden" value="${sessionScope.session.mbId }" />
+            
 
             <h4>재능 타이틀</h4>
             <div class="settingOption title">
 
-                <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_title" type="text" maxlength="100" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_title" class="textarea" style="width: 100%; height: 55px;" />
+                <textarea name="brSubject" maxlength="100" class="textarea" style="width: 100%; height: 55px;"></textarea>
 
             </div>
 
-            <h4>상세 주소</h4>
-            <p class="settingDesc">정확한 주소가 아닌 경우 위치기반 검색에서 노출이 되지 않을 수 있습니다.</p>
-            <div class="settingOption address">
-
-                <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_addr" type="text" maxlength="100" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_addr" class="input-text" style="width:510px;width: 100%;" />
-            </div>
+            
 
             <h4>연락처</h4>
             <p class="settingDesc">미스터스 팀에서 판매자에게 연락할 수 있는 번호를 입력해주세요.</p>
             <div class="settingOption">
 
-                <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_tel1" type="text" maxlength="3" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_tel1" class="input-text" style="width:89px;width: 60px;" />
-                -<input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_tel2" type="text" maxlength="4" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_tel2" class="input-text" style="width: 60px;" />
-                -<input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_tel3" type="text" maxlength="4" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_tel3" class="input-text" style="width: 60px;" />
+                <input name="tel1" type="text" maxlength="3"  class="input-text" style="width:89px;width: 60px;" />
+                -<input name="tel2" type="text" maxlength="4"  class="input-text" style="width: 60px;" />
+                -<input name="tel3" type="text" maxlength="4"  class="input-text" style="width: 60px;" />
 
             </div>
 
@@ -130,66 +351,35 @@
                     <h4>재능 가격</h4>
                     <div class="settingOption">
 
-                        <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_price" type="text" maxlength="12" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_price" class="input-text" style="width:129px;width: 113px;" />
-                        <label for="">,000 원</label>
+                        <input name="brPrice" type="text" maxlength="12" class="input-text" style="width:129px;" />
+                        <label for=""> 원</label>
                     </div>
                 </div>
 
-                <div class="innerWrap item2">
-                    <h4>평균 작업일</h4>
-                    <div class="settingOption">
-
-                        <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_wdays" type="text" maxlength="3" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_wdays" class="input-text" style="width:43px;width: 50px;" />
-                        <label for="">일</label>
-                    </div>
-                </div>
-
-                <div class="innerWrap item3">
-                    <h4>동시작업 개수</h4>
-                    <div class="settingOption">
-
-                        <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_concur" type="text" maxlength="3" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_concur" class="input-text" style="width:62px;width: 50px;" />
-                        <label for="">개</label>
-                    </div>
-                </div>
-
-                <div class="innerWrap item4">
-                    <h4>상품 재능 배송비</h4>
-                    <div class="settingOption">
-
-                        <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_dprice" type="text" value="0" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_dprice" class="input-text" style="width:118px;width: 113px;" />
-                        <label for="">,000 원</label>
-                    </div>
-                </div>
             </div>
 
             <h4>옵션 추가</h4>
             <p class="settingDesc">
-                옵션은 최대 5개까지 추가 가능합니다.&nbsp;&nbsp;
-                <a id="ContentPlaceHolder1_WUC_My_AblityEdit1_lbtn_optAdd" class="btnType6" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$lbtn_optAdd&#39;,&#39;&#39;)"><span>옵션추가</span></a>
-
+               <!--  옵션은 최대 5개까지 추가 가능합니다.&nbsp;&nbsp;
+                <a class="btnType6" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$lbtn_optAdd&#39;,&#39;&#39;)"><span>옵션추가</span></a> -->
+				 옵션1 <input name="options" type="text" maxlength="12" class="input-text" style="width:129px;" />
+				 추가금액1 <input name="prices" type="text" maxlength="12" class="input-text" style="width:129px;" /><br/>
+				  옵션2 <input name="options" type="text" maxlength="12" class="input-text" style="width:129px;" />
+				 추가금액2 <input name="prices" type="text" maxlength="12" class="input-text" style="width:129px;" /><br/>
+				  옵션3 <input name="options" type="text" maxlength="12" class="input-text" style="width:129px;" />
+				 추가금액3 <input name="prices" type="text" maxlength="12" class="input-text" style="width:129px;" /><br/>
+				  옵션4 <input name="options" type="text" maxlength="12" class="input-text" style="width:129px;" />
+				 추가금액4 <input name="prices" type="text" maxlength="12" class="input-text" style="width:129px;" /><br/>
+				  옵션5 <input name="options" type="text" maxlength="12" class="input-text" style="width:129px;" />
+				 추가금액5 <input name="prices" type="text" maxlength="12" class="input-text" style="width:129px;" /><br/>
             </p>
-
+			<input type="hidden" name="completedOption" value=""/>
             <h4>재능설명</h4>
             <div class="settingOption">
-
-                <textarea name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_remark" rows="2" cols="20" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_remark" class="textarea" style="height:71px;width:772px;width: 100%; height: 270px;">
+                <textarea name="brContent" rows="2" cols="20" class="textarea" style="height:71px;width:772px;width: 100%; height: 270px;">
                 </textarea>
             </div>
 
-            <h4>작업 요구사항</h4>
-            <div class="settingOption">
-
-                <textarea name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_work" rows="2" cols="20" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_work" class="textarea" style="height:57px;width:749px;width: 100%; height: 130px;">
-                </textarea>
-                <!--
-                        === 디자인파일참고 ===
-                        작업의 편의를 위해 구매자에게 필수로 요구할 사항을 적어주세요.
-                        ex) 명함디자인
-                        이름: 한글/			한자/				영어/
-                        전화번호:			휴대폰번호:			팩스:
-                        이메일:				주소: -->
-            </div>
 
 
 
@@ -198,15 +388,10 @@
         <p class="settingDesc">포트폴리오 및 상세페이지에서 사용될 모든 자료를 하나로 압축해서 올려주세요.<font color="red"> (용량제한: 10MB 미만)</font></p>
         <div class="settingOption">
 
-            <input type="file" name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$fu_attach" id="fu_attach" class="input-file" style="width:498px;width: 100%;" />
+            <input type="file" name="brMainPhoto" id="fu_attach" class="input-file" style="width:498px;width: 100%;" />
+            <input type="file" name="brMorePhoto" id="fu_attach" class="input-file" style="width:498px;width: 100%;" />
         </div>
 
-        <h4>Youtube URL</h4>
-        <p class="settingDesc">본인 재능을 소개하는 영상자료 TAG를 입력해주세요.</p>
-        <div class="settingOption">
-
-            <input name="ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$txt_ytube" type="text" maxlength="1000" id="ContentPlaceHolder1_WUC_My_AblityEdit1_txt_ytube" class="input-text" style="width: 100%;" />
-        </div>
 
         <div class="note">
             <strong>등록전 확인해주세요</strong>
@@ -223,15 +408,15 @@
         </div>
 
         <div class="btnArea al_c">
-
-            <a id="ContentPlaceHolder1_WUC_My_AblityEdit1_ltn_tempsave" class="btnType2" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$ltn_tempsave&quot;, &quot;&quot;, true, &quot;work&quot;, &quot;&quot;, false, true))"><span>임시저장</span></a>
-            <a onclick="javascript:return saveValidate();" id="ContentPlaceHolder1_WUC_My_AblityEdit1_ltn_save" class="btnType3" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$WUC_My_AblityEdit1$ltn_save&quot;, &quot;&quot;, true, &quot;work&quot;, &quot;&quot;, false, true))"><span>등록 요청</span></a>
-
+            <a onclick="sellIt();" class="btnType3"><span>등록 요청</span></a>
         </div>
     </div>
     <!-- //내용 -->
 </div>
 
+
+
+</form>
 
 </body>
 </html>
