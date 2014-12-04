@@ -156,7 +156,7 @@ public class TalentDAO {
 		
 	}
 	
-	public int deleteMember(String mb_id){
+	public int deleteMember(String mbId){
 		
 		PreparedStatement pstmt = null;
 		
@@ -169,7 +169,7 @@ public class TalentDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, mb_id);
+			pstmt.setString(1, mbId);
 			
 			result = pstmt.executeUpdate();
 			
@@ -238,6 +238,33 @@ public class TalentDAO {
 		return result;	
 	}
 	
+	
+	public int updateMember(String mbId,String changeMbPw1,String changeMbPw2){
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update member set mb_pw=? where mb_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, changeMbPw1);
+			pstmt.setString(2, mbId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return result;	
+	}
 	
 	
 	
