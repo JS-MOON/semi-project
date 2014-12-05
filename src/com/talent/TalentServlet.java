@@ -70,18 +70,17 @@ public class TalentServlet extends HttpServlet {
 
 			String mbId = req.getParameter("mbId");
 			String mbPw1 = req.getParameter("mbPw1");
-			String mbPw2 = req.getParameter("mbPw2");
 			String mbPic = "img_profile_img_blank_120x120.png";
 
 			String str = "";
+			
+			MemberDTO dto = dao.selectData(mbId);
 
-			if (dao.selectData(mbId) != null) {
+			if (dto!=null) {
 				str = "아이디가 존재합니다.";
-			} else if (!mbPw1.equals(mbPw2)) {
-				str = "비밀번호가 일치하지 않습니다.";
 			} else {
-
-				MemberDTO dto = new MemberDTO();
+				
+				dto = new MemberDTO();
 
 				dto.setMbId(mbId);
 				dto.setMbPw(mbPw1);
@@ -96,16 +95,18 @@ public class TalentServlet extends HttpServlet {
 				mbs.setMbPw(mbPw1);
 
 				session.setAttribute("session", mbs);
-
-
-				str = "가입이 완료되었습니다.";
+				
+				url = cp + "/Goods/Main.do";
+				resp.sendRedirect(url);
+				
+				return;
 			}
 
 			req.setAttribute("str", str);
-
+			
 			url = "/Register/Register.jsp";
 			forward(req, resp, url);
-
+			
 		} else if (uri.contains("Register_ok.do")) {
 			resp.sendRedirect("../");
 
@@ -402,8 +403,8 @@ public class TalentServlet extends HttpServlet {
 				dao.BoardInsert(dto);
 			}
 
-			url = cp + "/Goods/Main.jsp";
-			resp.sendRedirect(url);
+			url = cp + "/Goods/Main.do";
+			forward(req, resp, url);
 
 		} else if (uri.indexOf("GList.do") != -1) {
 
@@ -598,6 +599,8 @@ public class TalentServlet extends HttpServlet {
 
 
 		}else if (uri.indexOf("Out.do") != -1) {
+			
+			
 
 			HttpSession session = req.getSession();
 			MemberSession mbs = (MemberSession)session.getAttribute("session");

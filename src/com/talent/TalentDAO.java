@@ -367,6 +367,7 @@ public class TalentDAO {
 				dto.setBrOptions(rs.getString("br_options"));
 				dto.setBrPrice(rs.getInt("br_price"));
 				dto.setBrDate(rs.getString("br_date"));
+				dto.setBrCount(rs.getInt("br_count"));
 				lists.add(dto);
 
 			}

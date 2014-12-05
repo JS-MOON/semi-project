@@ -4,6 +4,7 @@
   Date: 2014-11-27
   Time: 오후 6:15
 --%>
+<%@page import="com.talent.TalentDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="decorator"
@@ -203,6 +204,18 @@
 		function goLogin() {
 			// var button = document.getElementById('lbtnLogin');
 			var f = document.loginForm;
+			
+			if(!f.mbId.value.trim()){
+				alert("아이디를 입력하세요.");
+				f.mbId.focus();
+				return;
+			}
+			if(!f.mbPw.value.trim()){
+				 alert("비밀번호를 입력하세요.");
+				 f.mbPw1.focus();
+				 return;
+			 }
+			
 			// button.click();
 
 			f.submit();
@@ -229,9 +242,56 @@
 			hideLayer('loginPop');
 			showLayer('registerFindPop', 'modalpop');
 		}
+		
+		//trim();
+		String.prototype.trim = function() {
+			var TRIM_PATTERN = /(^\s*)|(\s*$)/g;
+			return this.replace(TRIM_PATTERN, "");
+		};
 
+		// E-Mail 검사
+		function isValidEmail(email) {
+			var format = /^((\w|[\-\.])+)@((\w|[\-\.])+)\.([A-Za-z]+)$/;
+		    if (email.search(format) != -1)
+		        return true; //올바른 포맷 형식
+		    return false;
+		}
+		
 		function validateMemberJoin() {
 			var f = document.myForm;
+			
+			
+			if(!f.mbId.value.trim()){
+				alert("아이디를 입력하세요.");
+				f.mbId.focus();
+				return;
+			}
+			
+			 if(f.mbId.value) {
+			    	if(!isValidEmail(f.mbId.value)) {
+		                alert("\n정상적인 E-Mail을 입력하세요. ");
+		                f.mbId.focus();
+		                return;
+			    	}
+			 }
+			 
+			 if(!f.mbPw1.value.trim()){
+				 alert("비밀번호를 입력하세요.");
+				 f.mbPw1.focus();
+				 return;
+			 }
+			 
+			 if(!f.mbPw2.value.trim()){
+				 alert("비밀번호를 입력하세요.");
+				 f.mbPw2.focus();
+				 return;
+			 }
+			 
+			 if(f.mbPw1.value!=(f.mbPw2.value)){
+				 alert("비밀번호를 확인하세요.");
+				 f.mbPw1.focus();
+				 return;
+			 }
 
 			if ($('input:checkbox[id=chk_agree1]').is(':checked') == false) {
 				alert("이용약관에 동의하세요.");
@@ -242,6 +302,8 @@
 				return;
 			}
 
+		//	alert("회원가입이 완료되었습니다.");
+			
 			f.submit();
 		}
 
