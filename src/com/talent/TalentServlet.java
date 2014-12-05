@@ -7,8 +7,7 @@ import com.util.DivideOptions;
 import com.util.FileManager;
 import com.util.ImageName;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -66,8 +65,22 @@ public class TalentServlet extends HttpServlet {
 		if(!myDir.exists())
 			myDir.mkdirs();
 
-		if (uri.contains("Register.do")) {
+		if(uri.contains("My") || uri.contains("GOrder.do")) {
+			HttpSession session = req.getSession();
+			System.out.println("23423423411asdfsdfasd");
 
+			if (session.getAttribute("session")==null) {
+				String str = "로그인이 필요합니다.";
+				req.setAttribute("str", str);
+
+				System.out.println("nononoo");
+
+				url = "/Register/Register.do";
+				forward(req, resp, url);
+			}
+		}
+
+		if (uri.contains("Register.do")) {
 			String mbId = req.getParameter("mbId");
 			String mbPw1 = req.getParameter("mbPw1");
 			String mbPic = "img_profile_img_blank_120x120.png";
@@ -160,7 +173,7 @@ public class TalentServlet extends HttpServlet {
 
 			dao.hsInsert(dto);
 
-			url = "/My/MyOrderMng.do";
+			url = cp + "/My/MyOrderMng.do";
 			resp.sendRedirect(url);
 		} else if (uri.contains("Login.do")) {
 
@@ -273,7 +286,6 @@ public class TalentServlet extends HttpServlet {
 
 			String imagePath = cp + "/pds/imageFile";
 
-
 			HttpSession session = req.getSession();
 
 			MemberSession mbs =
@@ -281,6 +293,7 @@ public class TalentServlet extends HttpServlet {
 
 			MemberDTO dto = dao.getReadMember(mbs.getMbId());
 
+			req.setAttribute("dto", dto);
 			req.setAttribute("imagePath", imagePath);
 
 			url = "/My/MyProfile.jsp";
@@ -566,6 +579,7 @@ public class TalentServlet extends HttpServlet {
 			req.setAttribute("op", op);
 			req.setAttribute("imagePath", imagePath);
 			req.setAttribute("dto", dto);
+			req.setAttribute("brNum", brNum);
 
 			url = "/Goods/GDetail.jsp";// �����ּ�
 			forward(req, resp, url);
@@ -603,7 +617,7 @@ public class TalentServlet extends HttpServlet {
 			String changeMbPw2 = req.getParameter("changeMbPw2");
 
 
-			dao.updateMember(mbId,changeMbPw1,changeMbPw2);
+			dao.updateMember(mbId, changeMbPw1, changeMbPw2);
 
 			url = cp + "/My/MyAccount.jsp";
 			resp.sendRedirect(url);
@@ -643,4 +657,8 @@ public class TalentServlet extends HttpServlet {
 
 	}
 
+
 }
+
+
+
