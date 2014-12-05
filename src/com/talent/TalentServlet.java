@@ -455,9 +455,9 @@ public class TalentServlet extends HttpServlet {
 			
 			BoardDTO dto = dao.getReadData(brNum);
 			
+			dao.updateBrCount(brNum);
+			
 			List<String> op = dto.getBrOptionsList();
-			
-			
 			
 
 			// ī�װ� �ҷ�����

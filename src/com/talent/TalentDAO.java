@@ -342,7 +342,7 @@ public class TalentDAO {
 		String sql;
 		try {
 			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
-			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
+			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date,A.br_count ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num order by A.br_num desc";
 			
 			/*sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
@@ -370,6 +370,7 @@ public class TalentDAO {
 				dto.setBrOptions(rs.getString("br_options"));
 				dto.setBrPrice(rs.getInt("br_price"));
 				dto.setBrDate(rs.getString("br_date"));
+				dto.setBrCount(rs.getInt("br_count"));
 				lists.add(dto);
 
 			}
@@ -725,6 +726,7 @@ public class TalentDAO {
 		return lists;
 	}
 	
+	//메인페이지 new재능순 출력
 	public List<BoardDTO> newTalentList(){
 		
 		List<BoardDTO> lists = new ArrayList<BoardDTO>();
@@ -766,7 +768,7 @@ public class TalentDAO {
 		
 	}
 	
-	
+	//메인페이지 조회수 순 출력
 	public List<BoardDTO> mainCountList(){
 		
 		List<BoardDTO> lists = new ArrayList<BoardDTO>();
@@ -811,6 +813,33 @@ public class TalentDAO {
 		
 	}
 	
+	//조회수증가
+	public int updateBrCount(int brNum){
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update board set br_count = br_count + 1 ";
+			sql+= "where br_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, brNum);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
 	
 
 }
