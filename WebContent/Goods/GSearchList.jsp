@@ -34,8 +34,7 @@
 								<span class="sellingUser"> 
 								<!-- a링크 삭제 이미지만 남겨둬 -->
 								
-									<img
-									src="../Profile/M00141006995286W/Profile/M00141006995286W.png"
+									<img src="../pds/imageFile/${dto.mbPic }"
 									alt="" Height=36px Width=36px /> <span class="user_id">${dto.mbNickName} </span>
 		
 								</span>
@@ -63,7 +62,7 @@
 								<span class="category">[${dto.cgCategory1}]
 								</span> <span class="pdtTitle">${dto.brSubject }</span>
 								<div class="counting">
-									<span class="buying"> <span class="num">262</span> <span>View</span>
+									<span class="buying"> <span class="num">${dto.brCount}</span> <span>View</span>
 									</span> <span class="price"> <span class="num">${dto.brPrice }</span> 원
 									</span>
 								</div>

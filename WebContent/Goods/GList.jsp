@@ -67,7 +67,7 @@
 					<div class="pdtSort">
 						<select name="range" onchange="sortIt();" style="width: 110px;">
 							<option value="0">정렬선택</option>
-							<option value="1">최고가순ㅇㅇ</option>
+							<option value="1">최고가순</option>
 							<option value="2">최저가순</option>
 							<option value="3">최신상품순</option>
 
@@ -88,7 +88,7 @@
 								<!-- a링크 삭제 이미지만 남겨둬 -->
 								
 									<img
-									src="../Profile/M00141006995286W/Profile/M00141006995286W.png"
+									src="../pds/imageFile/${dto.mbPic }"
 									alt="" Height=36px Width=36px /> <span class="user_id">${dto.mbNickName} </span>
 		
 								</span>

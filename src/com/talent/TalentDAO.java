@@ -341,7 +341,7 @@ public class TalentDAO {
 		ResultSet rs = null;
 		String sql;
 		try {
-			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql = "select C.cg_category1,B.mb_nickName,B.mb_pic,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date,A.br_count ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num order by A.br_num desc";
 
@@ -357,6 +357,7 @@ public class TalentDAO {
 				dto = new BoardDTO();
 				dto.setCgCategory1(rs.getString("cg_category1"));
 				dto.setMbNickName(rs.getString("mb_nickName"));
+				dto.setMbPic(rs.getString("mb_pic"));
 				dto.setBrNum(rs.getInt("br_num"));
 				dto.setMbId(rs.getString("mb_id"));
 				dto.setCgNum(rs.getInt("cg_num"));
@@ -392,7 +393,7 @@ public class TalentDAO {
 		ResultSet rs = null;
 		String sql;
 		try {
-			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql = "select C.cg_category1,B.mb_nickName,B.mb_pic,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num ";
 			sql += "order by A."+column+" "+order;
@@ -413,6 +414,7 @@ public class TalentDAO {
 				dto = new BoardDTO();
 				dto.setCgCategory1(rs.getString("cg_category1"));
 				dto.setMbNickName(rs.getString("mb_nickName"));
+				dto.setMbPic(rs.getString("mb_pic"));
 				dto.setBrNum(rs.getInt("br_num"));
 				dto.setMbId(rs.getString("mb_id"));
 				dto.setCgNum(rs.getInt("cg_num"));
@@ -424,6 +426,7 @@ public class TalentDAO {
 				dto.setBrPrice(rs.getInt("br_price"));
 				dto.setBrDate(rs.getString("br_date"));
 				dto.setBrCount(rs.getInt("br_count"));
+
 				lists.add(dto);
 
 			}
@@ -868,11 +871,13 @@ public class TalentDAO {
 
 			searchValue ="%" + searchValue + "%";
 
-			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql = "select C.cg_category1,B.mb_nickName,B.mb_pic,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and "
 					+ "A.cg_num>=1 and A.cg_num<=109 and A.cg_num=C.cg_num and (A.br_subject like ? "
 					+ "or B.mb_nickName like ?) order by A.br_num desc";
+
+
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchValue);
@@ -883,6 +888,7 @@ public class TalentDAO {
 				dto = new BoardDTO();
 				dto.setCgCategory1(rs.getString("cg_category1"));
 				dto.setMbNickName(rs.getString("mb_nickName"));
+				dto.setMbPic(rs.getString("mb_pic"));
 				dto.setBrNum(rs.getInt("br_num"));
 				dto.setMbId(rs.getString("mb_id"));
 				dto.setCgNum(rs.getInt("cg_num"));
@@ -910,7 +916,7 @@ public class TalentDAO {
 		String sql;
 
 		try {
-			sql = "select C.mb_nickName,B.cg_category1,A.br_num,A.br_subject,A.br_mainphoto,A.br_price,A.br_count ";
+			sql = "select C.mb_nickName,C.mb_pic,B.cg_category1,A.br_num,A.br_subject,A.br_mainphoto,A.br_price,A.br_count ";
 			sql+= "from board A,category B,member C where A.cg_num=B.cg_num and A.mb_id=C.mb_id order by A.br_count desc";
 
 			pstmt = conn.prepareStatement(sql);
@@ -928,6 +934,7 @@ public class TalentDAO {
 				dto.setBrPrice(rs.getInt("br_price"));
 				dto.setBrCount(rs.getInt("br_count"));
 				dto.setMbNickName(rs.getString("mb_nickName"));
+				dto.setMbPic(rs.getString("mb_pic"));
 
 				lists.add(dto);
 			}
@@ -1005,9 +1012,3 @@ public class TalentDAO {
 	
 
 }
-
-
-
-
-
-

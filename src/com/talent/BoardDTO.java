@@ -23,12 +23,17 @@ public class BoardDTO {
     private String mbNickName;
     private String cgCategory1;
     private int brCount;
-    
+    private String mbPic;
 
+    public String getMbPic() {
+        return mbPic;
+    }
 
-	
+    public void setMbPic(String mbPic) {
+        this.mbPic = mbPic;
+    }
 
-	public int getBrCount() {
+    public int getBrCount() {
 		return brCount;
 	}
 

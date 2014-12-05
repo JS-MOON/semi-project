@@ -61,8 +61,10 @@
                     <div class="pdtWrap">
                         <div class="sellerResume" >
                         <span class="sellingUser">
-                                  <img src="../Profile/M00141006995286W/Profile/M00141006995286W.png" alt="" Height=36px  Width=36px />
-                                  <span class="user_id">${dto.mbNickName}</span>
+
+									<img
+                                            src="../pds/imageFile/${dto.mbPic }"
+                                            alt="" Height=36px Width=36px /> <span class="user_id">${dto.mbNickName} </span>
                         </span>
                             <div class="sellerCondition">
                                 <span class="onOff on">ONLINE</span>

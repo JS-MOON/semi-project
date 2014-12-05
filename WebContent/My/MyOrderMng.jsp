@@ -106,16 +106,16 @@
                     </tr>
                     </thead>
 
-					<c:forEach var="dto" items="${lists }">
+					<c:forEach var="dto" items="${lists }" varStatus="seq">
                     <tbody>
                     <tr>
                         <td class="num">
                             <div class="td">
-                                ${dto.brNum }</div>
+                                 ${seq.count }</div>
                         </td>
                         <td class="thumbnail">
                             <div class="td"><a href="../Goods/GDetail.do?brNum=${dto.brNum }">
-                                <img src="../Product/${dto.brMainphoto }" alt="지루한 타이핑 작업 대신 해드리죠"   Height=160px  Width=160px  /></div>
+                                <img src="../Product/${dto.brMainphoto }" alt=""   Height=160px  Width=160px  /></div>
                         </td>
                         <td class="payResume">
                             <div class="td">

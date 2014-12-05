@@ -52,7 +52,7 @@ public class TalentServlet extends HttpServlet {
 		String url;
 
 		String root = getServletContext().getRealPath("/");
-		String path = root + "Product";
+		String path = root + File.separator + "Product";
 
 		String myPath = root + File.separator + "pds" +
 				File.separator + "imageFile";
@@ -65,20 +65,17 @@ public class TalentServlet extends HttpServlet {
 		if(!myDir.exists())
 			myDir.mkdirs();
 
-		if(uri.contains("My") || uri.contains("GOrder.do")) {
-			HttpSession session = req.getSession();
-			System.out.println("23423423411asdfsdfasd");
-
-			if (session.getAttribute("session")==null) {
-				String str = "로그인이 필요합니다.";
-				req.setAttribute("str", str);
-
-				System.out.println("nononoo");
-
-				url = "/Register/Register.do";
-				forward(req, resp, url);
-			}
-		}
+//		if(uri.contains("My") || uri.contains("GOrder.do")) {
+//			HttpSession session = req.getSession();
+//
+//			if (session.getAttribute("session")==null) {
+//				String str = "로그인이 필요합니다.";
+//				req.setAttribute("str", str);
+//
+//				url = "/Register/Register.jsp";
+//				forward(req, resp, url);
+//			}
+//		}
 
 		if (uri.contains("Register.do")) {
 			String mbId = req.getParameter("mbId");
@@ -119,10 +116,9 @@ public class TalentServlet extends HttpServlet {
 			
 			url = "/Register/Register.jsp";
 			forward(req, resp, url);
-			
 		} else if (uri.contains("Register_ok.do")) {
-			resp.sendRedirect("../");
-
+			url = cp +  "/Goods/Main.do";
+			resp.sendRedirect(url);
 		} else if (uri.contains("GOrder.do")) {
 			String option = req.getParameter("completedOption");
 			String basicPrice = req.getParameter("basicPrice");
@@ -321,13 +317,6 @@ public class TalentServlet extends HttpServlet {
 			forward(req, resp, url);
 
 
-		}else if (uri.indexOf("SellProdReg.do") != -1) {
-
-
-			url = "/My/SellProdReg.jsp";// �����ּ�
-			forward(req, resp, url);
-
-
 		}else if(uri.contains("PhotoUpload_ok.do")){
 			HttpSession session = req.getSession();
 
@@ -428,7 +417,7 @@ public class TalentServlet extends HttpServlet {
 			}
 
 			url = cp + "/Goods/Main.do";
-			forward(req, resp, url);
+			resp.sendRedirect(url);
 
 		} else if (uri.indexOf("GList.do") != -1) {
 
