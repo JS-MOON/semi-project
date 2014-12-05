@@ -332,7 +332,7 @@ public class TalentDAO {
 
 	}
 
-	// �Խ��� ��� (��з��� ���)
+	// 대분류로 분류해서 br_num 순으로 출력
 	public List<BoardDTO> list(int start, int end) {
 
 		List<BoardDTO> lists = new ArrayList<BoardDTO>();
@@ -345,6 +345,57 @@ public class TalentDAO {
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num order by A.br_num desc";
 			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				dto = new BoardDTO();
+				dto.setCgCategory1(rs.getString("cg_category1"));
+				dto.setMbNickName(rs.getString("mb_nickName"));
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setMbId(rs.getString("mb_id"));
+				dto.setCgNum(rs.getInt("cg_num"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				dto.setBrMorePhoto(rs.getString("br_morephoto"));
+				dto.setBrContent(rs.getString("br_content"));
+				dto.setBrOptions(rs.getString("br_options"));
+				dto.setBrPrice(rs.getInt("br_price"));
+				dto.setBrDate(rs.getString("br_date"));
+				lists.add(dto);
+
+			}
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
+	}
+	
+	
+	
+	
+	//대분류로 분류해서 최고가,최저가,날짜순으로 출력하기
+	public List<BoardDTO> list(int start, int end,String column,String order) {
+	
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		try {
+			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
+			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num ";
+			sql += "order by A."+column+" "+order;
+			
 			/*sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
 			sql += "from board A,member B where A.mb_id=B.mb_id and cg_num>=? and cg_num<=? order by A.br_num desc";*/
@@ -352,6 +403,7 @@ public class TalentDAO {
 
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
+		
 
 			rs = pstmt.executeQuery();
 
@@ -393,12 +445,10 @@ public class TalentDAO {
 			ResultSet rs = null;
 			String sql;
 			try {
-				/*sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
-				sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
-				sql += "from board A,member B where A.mb_id=B.mb_id and cg_num=? order by A.br_num desc";*/
+				
 				
 				sql = "select br_num,br_subject,br_mainphoto,br_price from board ";
-				sql+= "where cg_num=?";
+				sql+= "where cg_num=? order by br_date desc";
 				pstmt = conn.prepareStatement(sql);
 
 				pstmt.setInt(1, cgNum);
@@ -725,6 +775,57 @@ public class TalentDAO {
 		return lists;
 	}
 	
+	
+	//검색해서 찾기
+	public List<BoardDTO> selectSubject(String searchValue){
+		
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		try {
+			
+			searchValue ="%" + searchValue + "%";
+			
+			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
+			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
+			sql += "from board A, member B, category C where A.mb_id=B.mb_id and "
+					+ "A.cg_num>=1 and A.cg_num<=109 and A.cg_num=C.cg_num and (A.br_subject like ? "
+					+ "or B.mb_nickName like ?) order by A.br_num desc";
+			
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchValue);
+			pstmt.setString(2, searchValue);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				dto = new BoardDTO();
+				dto.setCgCategory1(rs.getString("cg_category1"));
+				dto.setMbNickName(rs.getString("mb_nickName"));
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setMbId(rs.getString("mb_id"));
+				dto.setCgNum(rs.getInt("cg_num"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				dto.setBrMorePhoto(rs.getString("br_morephoto"));
+				dto.setBrContent(rs.getString("br_content"));
+				dto.setBrOptions(rs.getString("br_options"));
+				dto.setBrPrice(rs.getInt("br_price"));
+				dto.setBrDate(rs.getString("br_date"));
+				lists.add(dto);
+				
+				
+			}
+		
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
+		
+		
+		
+	}
 	
 	
 	

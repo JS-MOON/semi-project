@@ -222,7 +222,7 @@
         }
 
         f.completedOption.value = option;
-<<<<<<< HEAD
+
         
         
         
@@ -239,18 +239,7 @@
         	alert("재능설명을 적어주세요");
         	return;
         }
-        
-        
-        
-        
-        
-			
-		
-=======
-		alert(f.completedOption.value);
-		alert(f.s1.value +" : "+ f.s2.value);
 
->>>>>>> origin/master
         f.action = "SellProdReg_ok.do";
         f.submit();
 
@@ -301,54 +290,7 @@
                		<option value="0">선택하세요</option>
 
                </select>
-<<<<<<< HEAD
-               
-               
-=======
 
-
-
-
-
-
-
-
-
-
-
-               <!--  <select name="category1" onchange="javascript:option();" class="select" style="width:180px;width: 180px;">
-                    <option selected="selected" value="110">그래픽 디자인</option>
-                    <option value="120">사업 전문가</option>
-                    <option value="130">문서 레포트</option>
-                    <option value="140">컴퓨터 IT</option>
-                    <option value="150">번역 외국어</option>
-                    <option value="160">음악 동영상</option>
-                    <option value="170">행사 공연</option>
-                    <option value="180">노하우 상담</option>
-                    <option value="190">생활서비스</option>
-                    <option value="200">여행 가이드</option>
-                    <option value="210">핸드메이드</option>
-                </select>
-
-
-                <select name="category2"  class="select" style="width:250px;width: 250px;">
-                    <option selected="selected" value="1">도면/3D</option>
-                    <option value="2">로고/BI/CI디자인</option>
-                    <option value="3">만화/웹툰</option>
-                    <option value="4">명함</option>
-                    <option value="5">배너/상세페이지</option>
-                    <option value="6">블로그/카페/웹</option>
-                    <option value="7">사진/포토샵</option>
-                    <option value="8">일러스트/그림</option>
-                    <option value="9">전단지/홍보물</option>
-                    <option value="10">캐리커쳐/인물</option>
-                    <option value="1101010">캐릭터/아이콘</option>
-                    <option value="1101002">캘리그라피</option>
-                    <option value="1101013">POP</option>
-                    <option value="1101014">PPT/템플릿</option>
-
-                </select> -->
->>>>>>> origin/master
 
             </div>
 
