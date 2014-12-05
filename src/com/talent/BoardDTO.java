@@ -22,8 +22,19 @@ public class BoardDTO {
     private String brDate;
     private String mbNickName;
     private String cgCategory1;
+    private int brCount;
     
 
+
+	
+
+	public int getBrCount() {
+		return brCount;
+	}
+
+	public void setBrCount(int brCount) {
+		this.brCount = brCount;
+	}
 
 	public String getCgCategory1() {
 		return cgCategory1;

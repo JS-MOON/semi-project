@@ -159,9 +159,18 @@ public class TalentServlet extends HttpServlet {
 		} else if (uri.contains("Main.do")) {
 			String str = "";
 
+			String imagePath = cp + "/Product";
+			
 			str = (String) req.getAttribute("str");
+			
+			List<BoardDTO> newLists = dao.newTalentList();
+			
+			List<BoardDTO> countLists = dao.mainCountList();
 
 			req.setAttribute("str", str);
+			req.setAttribute("imagePath", imagePath);
+			req.setAttribute("newLists", newLists);
+			req.setAttribute("countLists", countLists);
 
 			url = "/Goods/Main.jsp";
 			forward(req, resp, url);

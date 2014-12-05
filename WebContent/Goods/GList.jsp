@@ -20,27 +20,22 @@
 			<div>
 				<div class="subCategory">
 					<ul>
-
 						<li><a href="GList.jsp?pg%3d1%26sr%3d1%26cy%3d140&ct=140">
-								<input type="submit" name="" value="전체">
-
-						<li><a href="GList.do?start=1&end=109">
 								<input type="submit" name=""
 								value="전체"
 								style="background-color: #EDEDED; border-style: None; height: 26px;" />
 						</a></li>
-
+						
 						<!-- 반복문으로 카테고리2 표현하기 -->
-						<c:forEach var="dto" items="${cglists}">
-							<li><a href="GList_ok.do?cgNum=${dto.cgNum}"> <input
-									type="submit" name="cgCategory2" value="${dto.cgCategory2}"
-									style="background-color: #EDEDED; border-style: None; height: 26px;" />
-							</a></li>
+						<c:forEach var="dto" items="${cglists }">
+						<li><a href="GList_ok.do?cgNum=${dto.cgNum}">
+								<input type="submit"
+								name="cgCategory2"
+								value="${dto.cgCategory2}"
+								style="background-color: #EDEDED; border-style: None; height: 26px;" />
+						</a></li>
 						</c:forEach>
 						<!-- 반복문으로 카테고리2 표현하기 -->
-
-
-
 
 					</ul>
 				</div>
@@ -57,18 +52,23 @@
 				<!-- 제품리스트 -->
 				<div class="pdtListWrap">
 					<div class="pdtList">
-
+					
 						<!-- for문 -->
 						<c:forEach var="dto" items="${lists}">
-							<div class="pdtWrap">
-								<div class="sellerResume">
-									<span class="sellingUser"> <!-- a링크 삭제 이미지만 남겨둬 --> <img
-										src="../Profile/M00141006995286W/Profile/M00141006995286W.png"
-										alt="" Height=36px Width=36px /> <span class="user_id">${dto.mbNickName}
+						<div class="pdtWrap">
+							<div class="sellerResume">
+								<span class="sellingUser"> 
+								<!-- a링크 삭제 이미지만 남겨둬 -->
+								
+									<img
+									src="../Profile/M00141006995286W/Profile/M00141006995286W.png"
+									alt="" Height=36px Width=36px /> <span class="user_id">${dto.mbNickName} </span>
+		
+								</span>
+								<div class="sellerCondition">
+									<span class="onOff on">ONLINE</span> <span class="response">평균
+										응답시간 <span class="num">10</span>분
 									</span>
-<<<<<<< HEAD
-
-=======
 								</div>
 							</div>
 							
@@ -76,7 +76,7 @@
 							<div>
 								
 									<span class="pdtThumb"> <img
-										src="../Product/${dto.brMainPhoto}"
+										src="${imagePath }/${dto.brMainPhoto}"
 										alt="기업용 홈페이지 제작해드립니다." Height=308px Width=308px /> <span
 										class="btnWistList on"> <input type="image"
 											src="../resources/images/product/btn_wishList_on.png"
@@ -91,46 +91,17 @@
 								<div class="counting">
 									<span class="buying"> <span class="num">262</span> <span>View</span>
 									</span> <span class="price"> <span class="num">${dto.brPrice }</span> 원
->>>>>>> origin/master
 									</span>
-									<div class="sellerCondition">
-										<span class="onOff on">ONLINE</span> <span class="response">평균
-											응답시간 <span class="num">10</span>분
-										</span>
-									</div>
 								</div>
-
-								<a href="GDetail.do?brNum=${dto.brNum }">
-									<div>
-
-										<span class="pdtThumb"> <img
-											src="${imagePath }/${dto.brMainPhoto}"
-											alt="기업용 홈페이지 제작해드립니다." Height=308px Width=308px /> <span
-											class="btnWistList on"> <input type="image"
-												src="../resources/images/product/btn_wishList_on.png"
-												style="border-style: None;" />
-										</span>
-										</span>
-
-									</div>
-									<div class="pdt_info">
-										<span class="category">[${dto.cgCategory1}] </span> <span
-											class="pdtTitle">${dto.brSubject }</span>
-										<div class="counting">
-											<span class="buying"> <span class="num">262</span> <span>View</span>
-											</span> <span class="price"> <span class="num">${dto.brPrice }</span>
-												원
-											</span>
-										</div>
-									</div>
-								</a>
 							</div>
+							</a>
+						</div>
 						</c:forEach>
 						<!-- //for문 -->
-
+						
 					</div>
 				</div>
-
+				
 				<!-- 제품리스트 -->
 
 			</div>

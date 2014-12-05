@@ -222,7 +222,6 @@
         }
 
         f.completedOption.value = option;
-<<<<<<< HEAD
         
         
         
@@ -246,11 +245,10 @@
         
 			
 		
-=======
+
 		alert(f.completedOption.value);
 		alert(f.s1.value +" : "+ f.s2.value);
 
->>>>>>> origin/master
         f.action = "SellProdReg_ok.do";
         f.submit();
 
@@ -301,10 +299,7 @@
                		<option value="0">선택하세요</option>
 
                </select>
-<<<<<<< HEAD
-               
-               
-=======
+
 
 
 
@@ -348,7 +343,7 @@
                     <option value="1101014">PPT/템플릿</option>
 
                 </select> -->
->>>>>>> origin/master
+
 
             </div>
 

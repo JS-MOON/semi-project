@@ -308,8 +308,8 @@ public class TalentDAO {
 
 		try {
 			sql = "insert into board(br_num,mb_id,cg_num,br_subject, ";
-			sql += "br_mainphoto,br_morephoto,br_content,br_options,br_price,br_date) ";
-			sql += "values (?,?,?,?,?,?,?,?,?,sysdate)";
+			sql += "br_mainphoto,br_morephoto,br_content,br_options,br_price,br_date,br_count) ";
+			sql += "values (?,?,?,?,?,?,?,?,?,sysdate,0)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dto.getBrNum());
 			pstmt.setString(2, dto.getMbId());
@@ -724,6 +724,93 @@ public class TalentDAO {
 		}
 		return lists;
 	}
+	
+	public List<BoardDTO> newTalentList(){
+		
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+			
+			sql = "select B.cg_category1,A.br_num,A.br_subject,A.br_mainphoto,A.br_price ";
+			sql+= "from board A,category B where A.cg_num=B.cg_num order by A.br_num desc";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				dto = new BoardDTO();
+				
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setCgCategory1(rs.getString("cg_category1"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				dto.setBrPrice(rs.getInt("br_price"));
+				lists.add(dto);
+				
+			}
+			
+			rs.close();
+			pstmt.close();
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
+		
+	}
+	
+	
+	public List<BoardDTO> mainCountList(){
+		
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		
+		try {
+			
+			sql = "select C.mb_nickName,B.cg_category1,A.br_num,A.br_subject,A.br_mainphoto,A.br_price,A.br_count ";
+			sql+= "from board A,category B,member C where A.cg_num=B.cg_num and A.mb_id=C.mb_id order by A.br_count desc";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				dto = new BoardDTO();
+				
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setCgCategory1(rs.getString("cg_category1"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				dto.setBrPrice(rs.getInt("br_price"));
+				dto.setBrCount(rs.getInt("br_count"));
+				dto.setMbNickName(rs.getString("mb_nickName"));
+				
+				lists.add(dto);
+				
+			}
+			
+			rs.close();
+			pstmt.close();
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
+		
+	}
+	
 	
 
 }
