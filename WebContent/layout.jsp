@@ -66,7 +66,6 @@
 
 	<script type="text/javascript">
 		var id = null;
-		var str = null;
 
 		$(document).ready(function() {
 			if (document.getElementById("sessionId").value !== "") {
@@ -82,10 +81,6 @@
 				$('.headerLogin').removeClass('hidden');
 				$('.utilMenu').addClass('hidden');
 			}
-
-			/* if (document.getElementById("str").value !== "") {
-				alert(str);
-			} */
 
 		});
 	</script>
@@ -293,13 +288,13 @@
 							<div class="alramWrap">
 								<img
 										src="../resources/images/common/ico_seller_default_thumb.png"
-										alt="" /> <span class="alram">[mistus]님이 재능접수를 완료했습니다.
+										alt="" /> <span class="alram">[talent]님이 재능접수를 완료했습니다.
 										판매자님과 대화를 시작해주세요</span> <span class="alramTime">1분 전</span>
 							</div>
 							<div class="alramWrap">
 								<img
 										src="../resources/images/common/ico_seller_default_thumb.png"
-										alt="" /> <span class="alram">[mistus]님이 재능접수를 완료했습니다.
+										alt="" /> <span class="alram">[talent]님이 재능접수를 완료했습니다.
 										판매자님과 대화를 시작해주세요</span> <span class="alramTime">1분 전</span>
 							</div>
 							<a href="#" class="seeMore">더보기</a> <span class="arr"></span>
@@ -353,7 +348,7 @@
 				<h1>
 					<a href="../"> <img
 							src="../resources/images/common/h1_logo.png"
-							alt="세상 모든 재능의 시작 MISTUS" />
+							alt="세상 모든 재능의 시작 TALENT" />
 					</a>
 				</h1>
 				<div class="searchWindow">
@@ -364,30 +359,30 @@
 					</a>
 					<ul class="searchKeyword">
 						<li><a
-								href='../Goods/GSearchList.do?sv=%eb%94%94%ec%9e%90%ec%9d%b8'>디자인</a></li>
+								href='../Goods/GList.do?start=2&end=2'>디자인</a></li>
 						<li><a
-								href='../Goods/GSearchList.do?sv=%eb%a7%88%ec%88%a0%ea%b3%b5%ec%97%b0'>마술공연</a></li>
-						<li><a href='../Goods/GSearchList.do?sv=%ed%8e%b8%ec%a7%80'>편지</a></li>
-						<li><a href='../Goods/GSearchList.do?sv=%eb%a1%9c%ea%b3%a0'>로고</a></li>
+								href='../Goods/GList.do?start=61&end=61'>마술공연</a></li>
+						<li><a href='../Goods/GList.do?start=26&end=26'>편지</a></li>
+						<li><a href='../Goods/GList.do?start=2&end=2'>로고</a></li>
 						<li><a
-								href='../Goods/GSearchList.do?sv=%ec%9e%90%ec%86%8c%ec%84%9c'>자소서</a></li>
+								href='../Goods/GList.do?start=30&end=30'>자소서</a></li>
 					</ul>
 				</div>
 				<div class="adBannerWrap">
 					<div class="nav"></div>
 					<ul class="adBanner">
 						<li><a
-								href='../Goods/GDetail.do?cd%3dG00141022772706W%26ct%3d1201003'>
+								href='#'>
 							<img src='../Upload/TopBanner/ADTB20141123023114219.png'
 								 width="230px" height="75px" alt="" />
 						</a></li>
 						<li><a
-								href='../Goods/GDetail.do?cd%3dG00141119690519W%26ct%3d1201008'>
+								href='#'>
 							<img src='../Upload/TopBanner/ADTB20141119044627641.png'
 								 width="230px" height="75px" alt="" />
 						</a></li>
 						<li><a
-								href='../Goods/GDetail.do?cd%3dG00141027107946W%26ct%3d2101011'>
+								href='#'>
 							<img src='../Upload/TopBanner/ADTB20141123023114219.png'
 								 width="230px" height="75px" alt="" />
 						</a></li>
@@ -436,7 +431,7 @@
 				<li><a href="../DisplayAD/ADPayment.jsp">재능광고신청</a></li>
 			</ul>
 			<div class="company_info">
-				<img src="../resources/images/common/footer.gif" alt="" />
+				<img src="../resources/images/common/footer.gif" style="margin-left: 36px" alt="" />
 			</div>
 		</div>
 	</div>

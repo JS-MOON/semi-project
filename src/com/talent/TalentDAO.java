@@ -582,24 +582,16 @@ public class TalentDAO {
 		return lists;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	//////////////////////////////////////////////////////////////////////////
 	// maxnum(cm_num)
 	public int cmMaxNum() {
-
 		int maxNum = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
 
 		try {
-
 			sql = "select nvl(max(cm_num),0) from comments";
 
 			pstmt = conn.prepareStatement(sql);
@@ -617,7 +609,6 @@ public class TalentDAO {
 			System.out.println(e.toString());
 		}
 		return maxNum;
-
 	}
 
 	public int cmInsert(CommentsDTO dto) {
@@ -692,10 +683,7 @@ public class TalentDAO {
 		return lists;
 
 	}
-	
-	
-	
-	
+
 	//GDetail 관련재능
 	public List<BoardDTO> getReadRelation(int start,int end){
 		
@@ -726,9 +714,58 @@ public class TalentDAO {
 		}
 		return lists;
 	}
-	
-	
 
+	//history
+	public int hsMaxNum() {
+		int maxNum = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+			sql = "select nvl(max(cm_num),0) from history";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				maxNum = rs.getInt(1);
+			}
+			pstmt.close();
+			rs.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return maxNum;
+	}
+
+	public int hsInsert(HistoryDTO dto) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+
+		try {
+			sql = "insert into history(hs_num,mb_id,br_num,hs_date,hs_price,hs_totalPrice,hs_options) ";
+			sql += "values(?,?,?,sysdate,?,?,?)";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, dto.getHsNum());
+			pstmt.setString(2, dto.getMbId());
+			pstmt.setInt(3, dto.getBrNum());
+			pstmt.setInt(4, dto.getHsPrice());
+			pstmt.setInt(5, dto.getHsTotalPrice());
+			pstmt.setString(6, dto.getHsOptions());
+
+			result = pstmt.executeUpdate();
+
+			pstmt.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
 }
 
 

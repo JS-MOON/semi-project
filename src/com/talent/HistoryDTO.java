@@ -1,6 +1,7 @@
 package com.talent;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 /**
  * Created by JS on 2014-12-01.
@@ -11,44 +12,63 @@ public class HistoryDTO {
     private String mbId;
     private int brNum;
     private Date hsDate;
-    private int hsBuyPrice;
-    private int hsSellPrice;
+    private int hsPrice;
+    private int hsTotalPrice;
+	private String hsOptions;
+
 	public int getHsNum() {
 		return hsNum;
 	}
+
 	public void setHsNum(int hsNum) {
 		this.hsNum = hsNum;
 	}
+
 	public String getMbId() {
 		return mbId;
 	}
+
 	public void setMbId(String mbId) {
 		this.mbId = mbId;
 	}
+
 	public int getBrNum() {
 		return brNum;
 	}
+
 	public void setBrNum(int brNum) {
 		this.brNum = brNum;
 	}
+
 	public Date getHsDate() {
 		return hsDate;
 	}
+
 	public void setHsDate(Date hsDate) {
 		this.hsDate = hsDate;
 	}
-	public int getHsBuyPrice() {
-		return hsBuyPrice;
-	}
-	public void setHsBuyPrice(int hsBuyPrice) {
-		this.hsBuyPrice = hsBuyPrice;
-	}
-	public int getHsSellPrice() {
-		return hsSellPrice;
-	}
-	public void setHsSellPrice(int hsSellPrice) {
-		this.hsSellPrice = hsSellPrice;
+
+	public int getHsPrice() {
+		return hsPrice;
 	}
 
-    
+	public void setHsPrice(int hsPrice) {
+		this.hsPrice = hsPrice;
+	}
+
+	public int getHsTotalPrice() {
+		return hsTotalPrice;
+	}
+
+	public void setHsTotalPrice(int hsTotalPrice) {
+		this.hsTotalPrice = hsTotalPrice;
+	}
+
+	public String getHsOptions() {
+		return hsOptions;
+	}
+
+	public void setHsOptions(String hsOptions) {
+		this.hsOptions = hsOptions;
+	}
 }

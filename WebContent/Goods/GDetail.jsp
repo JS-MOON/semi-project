@@ -45,6 +45,7 @@
 			}
 		}
 
+		document.getElementById("completedOption").value = options;
 		document.getElementById("totalPrice").value = totalPrice;
 	}
 
@@ -52,30 +53,13 @@
 
 <script language="JavaScript">
 	function order() {
-		var list = [ 'option1', 'option2', 'option3', 'option4', 'option5' ];
-		var options = [];
-		var option = "";
+		var f = document.opForm;
 
-		for (var i = 0; i < list.length; i++) {
-			if ($('input[id=' + list[i] + ']').is(":checked")) {
-				options[i] = "on";
-			} else {
-				options[i] = "off";
-			}
-			option += options[i] + "$";
-		}
-
-		document.optionForm.complitedOption.value = option;
-
-		document.optionForm.submit();
+		f.submit();
 	}
 </script>
 
 <div id="container">
-
-	<form method="post" action="../Goods/GOrder.do" name="optionForm">
-		<input type="hidden" name="complitedOption" value="" />
-	</form>
 
 	<!-- contents -->
 	<div id="contents" class="productView">
@@ -94,7 +78,7 @@
 		</style>
 
 		<div>
-			<form action="" method="post" name="opForm">
+			<form action="./GOrder.do" method="post" name="opForm">
 				<!-- 제품정보 -->
 				<div class="pdtInfo">
 					<!-- 제품개요 -->
@@ -176,9 +160,13 @@
 										</c:if>
 									</c:forEach>
 								</ol>
-								<input type="hidden" name="completedOption" value="" />
+								<input type="hidden" name="completedOption" id="completedOption" value="" />
 								<input type="hidden" name="basicPrice" id="basicPrice" value="${dto.brPrice }"/>
-
+								<input type="hidden" name="mainPhoto" value="${dto.brMainPhoto}" />
+								<input type="hidden" name="category1" value="${category1 }" />
+								<input type="hidden" name="category2" value="${category2 }" />
+								<input type="hidden" name="subject" value="${dto.brSubject }" />
+								<input type="hidden" name="brNum" value="${dto.brNum}">
 							</div>
 						</div>
 						<div class="amount">

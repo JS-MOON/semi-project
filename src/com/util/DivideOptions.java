@@ -10,14 +10,17 @@ import java.util.List;
 public class DivideOptions {
 
     public List<String> parse(String options) {
-    	
-    	
         List<String> list = new ArrayList<String>();
+        String[] optionPairArray;
 
-        String[] optionPairArray = options.split("&");
+        if(options.contains("&")) {
+            optionPairArray = options.split("&");
+        } else {
+            optionPairArray = new String[1];
+            optionPairArray[0] = options;
+        }
 
         for (int i=0; i<optionPairArray.length; i++) {
-
             String[] temp = optionPairArray[i].split("/");
 
             list.add(temp[0]);
