@@ -200,9 +200,18 @@ public class TalentServlet extends HttpServlet {
 		} else if (uri.contains("Main.do")) {
 			String str = "";
 
+			String imagePath = cp + "/Product";
+			
 			str = (String) req.getAttribute("str");
+			
+			List<BoardDTO> newLists = dao.newTalentList();
+			
+			List<BoardDTO> countLists = dao.mainCountList();
 
 			req.setAttribute("str", str);
+			req.setAttribute("imagePath", imagePath);
+			req.setAttribute("newLists", newLists);
+			req.setAttribute("countLists", countLists);
 
 			url = "/Goods/Main.jsp";
 			forward(req, resp, url);
@@ -220,7 +229,6 @@ public class TalentServlet extends HttpServlet {
 			url = "/Register/Register.jsp";
 			forward(req, resp, url);
 
-			//My
 		} else if (uri.contains("MyAccount.do")) {
 
 			url = "/My/MyAccount.jsp";
@@ -261,9 +269,7 @@ public class TalentServlet extends HttpServlet {
 
 			MemberDTO dto = dao.getReadMember(mbs.getMbId());
 
-			req.setAttribute("dto", dto);
 			req.setAttribute("imagePath", imagePath);
-
 
 			url = "/My/MyProfile.jsp";
 			forward(req, resp, url);
@@ -298,10 +304,6 @@ public class TalentServlet extends HttpServlet {
 
 
 		}else if(uri.contains("PhotoUpload_ok.do")){
-
-
-//			String mbId = req.getParameter("mbId");
-
 			HttpSession session = req.getSession();
 
 			MemberSession mbs =
@@ -408,92 +410,110 @@ public class TalentServlet extends HttpServlet {
 			int start = Integer.parseInt(req.getParameter("start"));
 			int end = Integer.parseInt(req.getParameter("end"));
 
-			List<BoardDTO> lists = dao.list(start, end);
-			req.setAttribute("lists", lists);
+			String option = req.getParameter("range");
 
+			if(option.equals("1")){//가격 내림차순
+				String column = "br_price";
+				String order = "desc";
+				List<BoardDTO> lists = dao.list(start, end, column, order);
+				req.setAttribute("lists", lists);
+			}else if(option.equals("2")){//가격 올림차순
+				String column = "br_price";
+				String order = "asc";
+				List<BoardDTO> lists = dao.list(start, end, column, order);
+				req.setAttribute("lists", lists);
+			}else if(option.equals("3")){//날짜순
+				String column = "br_date";
+				String order = "desc";
+				List<BoardDTO> lists = dao.list(start, end, column, order);
+				req.setAttribute("lists", lists);
+			}else {
+				List<BoardDTO> lists = dao.list(start, end);
+				req.setAttribute("lists", lists);
 
-
-
-			String imagePath = cp + "/Product";
-
-			if(1<=start && start<=14){
-				start = 1;
-				end =14;
+				if(1<=start && start<=14){
+					start = 1;
+					end =14;
+				}
+				if(15<= start&& start<=22){
+					start = 15;
+					end = 22;
+				}
+				if(23<=start && start<=30){
+					start = 23;
+					end = 30;
+				}
+				if(31<=start && start<=41){
+					start = 31;
+					end = 41;
+				}
+				if(42<=start && start<=50){
+					start = 42;
+					end = 50;
+				}
+				if(51<=start && start<=58){
+					start = 51;
+					end = 58;
+				}
+				if(59<=start && start<=68){
+					start = 59;
+					end = 68;
+				}
+				if(69<=start && start<=79){
+					start = 69;
+					end = 79;
+				}
+				if(80<=start && start<=90){
+					start = 80;
+					end = 90;
+				}
+				if(91<=start && start<=96){
+					start = 91;
+					end = 96;
+				}
+				if(97<=start && start<=109){
+					start = 97;
+					end = 109;
+				}
 			}
-			if(15<= start&& start<=22){
-				start = 15;
-				end = 22;
-			}
-			if(23<=start && start<=30){
-				start = 23;
-				end = 30;
-			}
-			if(31<=start && start<=41){
-				start = 31;
-				end = 41;
-			}
-			if(42<=start && start<=50){
-				start = 42;
-				end = 50;
-			}
-			if(51<=start && start<=58){
-				start = 51;
-				end = 58;
-			}
-			if(59<=start && start<=68){
-				start = 59;
-				end = 68;
-			}
-			if(69<=start && start<=79){
-				start = 69;
-				end = 79;
-			}
-			if(80<=start && start<=90){
-				start = 80;
-				end = 90;
-			}
-			if(91<=start && start<=96){
-				start = 91;
-				end = 96;
-			}
-			if(97<=start && start<=109){
-				start = 97;
-				end = 109;
-			}
-
-
+			
+			//카테고리 찍어주기
 			List<CategoryDTO> cglists = dao.getReadCategory(start, end);
 			req.setAttribute("cglists", cglists);
 
+			String imagePath = cp + "/Product";
 			req.setAttribute("imagePath", imagePath);
 
+			req.setAttribute("start", start);
+			req.setAttribute("end", end);
 
-			url = "/Goods/GList.jsp";// �����ּ�
+			url = "/Goods/GList.jsp";
 			forward(req, resp, url);
-
-		} else if (uri.indexOf("GList_ok.do") != -1) {
-
+		} else if (uri.indexOf("GList_ok.do") != -1) {	
 			int cgNum = Integer.parseInt(req.getParameter("cgNum"));
 
-			url = "GList.do?start=" + cgNum + "&end=" + cgNum ;
+			url = "GList.do?start=" + cgNum + "&end=" + cgNum + "&range=0";
 			resp.sendRedirect(url);
-
 		} else if (uri.indexOf("GDetail.do") != -1) {
-
 			int brNum = Integer.parseInt(req.getParameter("brNum"));
-			
-			/*List<BoardDTO> relists = dao.getReadRelation(start, end);
-			req.setAttribute("relists", relists);*/
-			// �Ѹ��� ������ �ҷ�����
+
 			BoardDTO dto = dao.getReadData(brNum);
-			// �ɼǹ迭 �ҷ�����
+
+			dao.updateBrCount(brNum);
+			
 			List<String> op = dto.getBrOptionsList();
+
 
 			// ī�װ� �ҷ�����
 			int cgNum = dto.getCgNum();
 			CategoryDTO cgdto = dao.getReadCategory(cgNum);
 			String category1 = cgdto.getCgCategory1();
 			String category2 = cgdto.getCgCategory2();
+
+		//관련재능 select
+			List<BoardDTO> relists = dao.list(cgNum);
+
+			req.setAttribute("relists", relists);
 
 			// �ۿø���� �ҷ�����
 			String MbId = dto.getMbId();
@@ -593,47 +613,20 @@ public class TalentServlet extends HttpServlet {
 				req.setAttribute("str", str);
 				session.invalidate();
 			}
-
-
 			url = "/Register/Register.jsp";
 			forward(req, resp, url);
 
+		} else if (uri.indexOf("GSearchList.do") != -1) {
+			String searchValue = req.getParameter("searchValue");
 
+			List<BoardDTO> lists = dao.selectSubject(searchValue);
 
+			req.setAttribute("lists", lists);
+
+			url = "/Goods/GSearchList.jsp";
+			forward(req, resp, url);
 		}
 
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

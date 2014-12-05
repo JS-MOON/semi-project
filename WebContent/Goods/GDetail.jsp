@@ -316,60 +316,18 @@ border: 0px;"/>
 				<!-- 관련재능 -->
 				<div class="pdtRelated">
 					<h3 class="title">관련재능</h3>
+					<!-- 관련재능 반복하기 -->
+					<c:forEach var="dto" items="${relists }">
 					<ul>
-						<li><a href="?&amp;cd=G00141027493130W&amp;ct=1101009">
+						<li><a href="GDetail.do?brNum=${dto.brNum }">
 									<span class="thumb"> <img
-											src="../Product/M00141027728249W/Product/P141113123025.jpg"
+											src="../Product/${dto.brMainPhoto }"
 											alt="7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. " Height=160px Width=160px />
-								</span> <span class="name"> 7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. </span> <span
-								class="price">10,000원</span>
+								</span> <span class="name"> ${dto.brSubject } </span> <span
+								class="price">${dto.brPrice }</span>
 						</a></li>
 					</ul>
-					<ul>
-						<li><a href="?&amp;cd=G00141027493130W&amp;ct=1101009">
-									<span class="thumb"> <img
-											src="../Product/M00141027728249W/Product/P141113123025.jpg"
-											alt="7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. " Height=160px Width=160px />
-								</span> <span class="name"> 7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. </span> <span
-								class="price">10,000원</span>
-						</a></li>
-					</ul>
-					<ul>
-						<li><a href="?&amp;cd=G00141027493130W&amp;ct=1101009">
-									<span class="thumb"> <img
-											src="../Product/M00141027728249W/Product/P141113123025.jpg"
-											alt="7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. " Height=160px Width=160px />
-								</span> <span class="name"> 7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. </span> <span
-								class="price">10,000원</span>
-						</a></li>
-					</ul>
-					<ul>
-						<li><a href="?&amp;cd=G00141027493130W&amp;ct=1101009">
-									<span class="thumb"> <img
-											src="../Product/M00141027728249W/Product/P141113123025.jpg"
-											alt="7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. " Height=160px Width=160px />
-								</span> <span class="name"> 7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. </span> <span
-								class="price">10,000원</span>
-						</a></li>
-					</ul>
-					<ul>
-						<li><a href="?&amp;cd=G00141027493130W&amp;ct=1101009">
-									<span class="thumb"> <img
-											src="../Product/M00141027728249W/Product/P141113123025.jpg"
-											alt="7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. " Height=160px Width=160px />
-								</span> <span class="name"> 7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. </span> <span
-								class="price">10,000원</span>
-						</a></li>
-					</ul>
-					<ul>
-						<li><a href="?&amp;cd=G00141027493130W&amp;ct=1101009">
-									<span class="thumb"> <img
-											src="../Product/M00141027728249W/Product/P141113123025.jpg"
-											alt="7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. " Height=160px Width=160px />
-								</span> <span class="name"> 7일간 유지되는 당신만의 타투디자인을 만들어 드립니다. </span> <span
-								class="price">10,000원</span>
-						</a></li>
-					</ul>
+					</c:forEach>
 				</div>
 				<!-- //관련재능 -->
 
