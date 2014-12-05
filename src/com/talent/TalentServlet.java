@@ -370,9 +370,6 @@ public class TalentServlet extends HttpServlet {
 
 			List<BoardDTO> lists = dao.list(start, end);
 			req.setAttribute("lists", lists);
-
-
-			
 			
 			String imagePath = cp + "/Product";
 
@@ -468,6 +465,7 @@ public class TalentServlet extends HttpServlet {
 			//���
 			List<CommentsDTO> lists = dao.cmList(brNum);
 			List<CommentsDTO> newLists = new ArrayList<CommentsDTO>();
+			
 			
 			
 

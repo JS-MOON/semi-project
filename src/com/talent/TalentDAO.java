@@ -727,7 +727,7 @@ public class TalentDAO {
 		return lists;
 	}
 	
-	
+
 
 }
 

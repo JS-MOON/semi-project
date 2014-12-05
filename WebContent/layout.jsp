@@ -357,7 +357,7 @@
 					</a>
 				</h1>
 				<div class="searchWindow">
-					<input name="" type="text" maxlength="10" title="TopSearch"
+					<input name="search" type="text" maxlength="10" title="TopSearch"
 						   class="mainSearch" onkeydown="javascript:SrcKeydown();" />
 					<a id="lbtnTopSearch" class="btnSearch" href="" alt="검색" /> <img
 						src="../resources/images/common/btn_main_search.png" alt="검색">
