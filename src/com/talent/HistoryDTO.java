@@ -15,9 +15,27 @@ public class HistoryDTO {
     private int hsPrice;
     private int hsTotalPrice;
 	private String hsOptions;
+	private String brSubject;
+	private String brMainphoto;
 
 	public int getHsNum() {
 		return hsNum;
+	}
+
+	public String getBrSubject() {
+		return brSubject;
+	}
+
+	public void setBrSubject(String brSubject) {
+		this.brSubject = brSubject;
+	}
+
+	public String getBrMainphoto() {
+		return brMainphoto;
+	}
+
+	public void setBrMainphoto(String brMainphoto) {
+		this.brMainphoto = brMainphoto;
 	}
 
 	public void setHsNum(int hsNum) {

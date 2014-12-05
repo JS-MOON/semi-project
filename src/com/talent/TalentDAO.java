@@ -966,6 +966,43 @@ public class TalentDAO {
 
 		return result;
 	}
+	
+	//히스토리 select
+	public List<HistoryDTO> selectHistory(String Mb_id){
+		
+		List<HistoryDTO> lists = new ArrayList<HistoryDTO>();
+		HistoryDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		try {
+			sql = "select hs.hs_date, hs.hs_price, hs.hs_totalprice, hs.hs_options,br.br_num, br.br_subject, br.br_mainphoto ";
+			sql+= "from history hs inner join board br on hs.br_num = br.br_num ";
+			sql+= "where hs.mb_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Mb_id);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				dto = new HistoryDTO();
+				dto.setHsDate(rs.getDate("hs_date"));
+				dto.setHsPrice(rs.getInt("hs_price"));
+				dto.setHsTotalPrice(rs.getInt("hs_totalprice"));
+				dto.setHsOptions(rs.getString("hs_options"));
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainphoto(rs.getString("br_mainphoto"));
+				lists.add(dto);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
+	}
+	
+	
+	
 
 }
 

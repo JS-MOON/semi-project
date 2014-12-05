@@ -250,6 +250,17 @@ public class TalentServlet extends HttpServlet {
 
 		} else if (uri.contains("MyOrderMng.do")) {
 
+			HttpSession session = req.getSession();
+
+			MemberSession mbs =
+					(MemberSession)session.getAttribute("session");
+
+			String MbId = mbs.getMbId();
+			
+			List<HistoryDTO> lists = dao.selectHistory(MbId);
+			
+			req.setAttribute("lists", lists);
+			
 			url = "/My/MyOrderMng.jsp";
 			forward(req, resp, url);
 
