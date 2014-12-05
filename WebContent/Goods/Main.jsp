@@ -23,21 +23,24 @@
                     <a href="#" class="prev bg">이전</a>
                     <a href="#" class="next bg">다음</a>
                 </div>
+               
                 <div class="rollingArea">
-
+					 <c:forEach var="dto" begin="0" end="9" items="${newLists}">
                     <div class="promotionWrap">
-                        <a href='../Goods/GDetail.jsp?cd%3dG00141106992652W%26ct%3d1901011'>
+                        <a href='../Goods/GDetail.do?brNum=${dto.brNum}'>
             <span class="thumb">
-            <img src='../Product/M00141106553600W/Product/P141113125005.jpg' width="274px" height="274px" alt="" />
+            <img src='${imagePath}/${dto.brMainPhoto}' width="274px" height="274px" alt="사진없음" />
             </span>
             <span class="info">
-            <span class="category">[생활서비스]</span>
-            <span class="title" style="height: 44px;">정성들인 감동적인 편지 대신 써드립니다.</span>
-            <span class="price"><span class="num">10,02300</span> 원</span>
+            <span class="category">[${dto.cgCategory1}]</span>
+            <span class="title" style="height: 44px;">${dto.brSubject}</span>
+            <span class="price"><span class="num">${dto.brPrice}</span> 원</span>
             </span>
                         </a>
                     </div>
+                    </c:forEach>
                 </div>
+                
             </div>
             <div class="pager"></div>
         </div>
@@ -54,11 +57,12 @@
 
             <div class="pdtListWrap">
                 <div class="pdtList">
+                	<c:forEach var="dto" begin="0" end="17" items="${countLists}">
                     <div class="pdtWrap">
                         <div class="sellerResume" >
                         <span class="sellingUser">
                                   <img src="../Profile/M00141006995286W/Profile/M00141006995286W.png" alt="" Height=36px  Width=36px />
-                                  <span class="user_id">조훈희</span>
+                                  <span class="user_id">${dto.mbNickName}</span>
                         </span>
                             <div class="sellerCondition">
                                 <span class="onOff on">ONLINE</span>
@@ -66,29 +70,30 @@
                             </div>
                         </div>
                         <div >
-                            <a href="../Goods/GDetail.jsp?pg%3d1%26sr%3d1%26sv&cd=G00141022107650W&ct=1401002">
+                            <a href="../Goods/GDetail.do?brNum=${dto.brNum}">
                             <span class="pdtThumb">
-                                <img src="../Product/M00141006995286W/Product/P141113121520.jpg" alt="기업용 홈페이지 제작해드립니다."  Height=308px  Width=308px   />
+                                <img src="${imagePath}/${dto.brMainPhoto}" alt="기업용 홈페이지 제작해드립니다."  Height=308px  Width=308px   />
                                 <span class="btnWistList on">
-                                    <input type="image" name="ctl00$ContentPlaceHolder1$WUC_Guest_AbilityList1$rptList$ctl00$ImageZZim" id="ContentPlaceHolder1_WUC_Guest_AbilityList1_rptList_ImageZZim_0" src="../resources/images/product/btn_wishList_on.png" style="border-style:None;" />
+                                    <input type="image" name="" id="ContentPlaceHolder1_WUC_Guest_AbilityList1_rptList_ImageZZim_0" src="../resources/images/product/btn_wishList_on.png" style="border-style:None;" />
                                 </span>
                             </span>
                             </a>
                         </div>
                         <div class="pdt_info">
-                            <span class="category">[컴퓨터 IT]</span>
-                            <span class="pdtTitle" >기업용 홈페이지 제작해드립니다.</span>
+                            <span class="category">[${dto.cgCategory1}]</span>
+                            <span class="pdtTitle" >${dto.brSubject}</span>
                             <div class="counting">
                             <span class="buying">
-                                <span class="num">262</span>
+                                <span class="num">${dto.brCount}</span>
                                 <span>View</span>
                             </span>
                             <span class="price">
-                                <span class="num">200,000</span> 원
+                                <span class="num">${dto.brPrice}</span> 원
                             </span>
                             </div>
                         </div>
                     </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

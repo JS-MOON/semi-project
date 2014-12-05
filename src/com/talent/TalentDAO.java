@@ -70,7 +70,7 @@ public class TalentDAO {
 				dto.setMbNickName(rs.getString("mb_nickName"));
 
 			}
-			
+
 			rs.close();
 			pstmt.close();
 
@@ -80,7 +80,7 @@ public class TalentDAO {
 		return dto;
 	}
 
-	
+
 	public String login(String mb_id) {
 
 		String mb_pw_r = "";
@@ -152,63 +152,63 @@ public class TalentDAO {
 		}
 
 		return dto;
-		
-		
+
+
 	}
-	
+
 	public int deleteMember(String mbId){
-		
+
 		PreparedStatement pstmt = null;
-		
+
 		String sql;
 		int result = 0;
-		
+
 		try {
-			
+
 			sql = "delete member where mb_id=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, mbId);
-			
+
 			result = pstmt.executeUpdate();
-			
+
 			pstmt.close();
-			
-			
+
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
+
 		return result;
-		
+
 	}
-	
+
 	//프로필사진업로드(update)
 	public int updateMember(String mbPic,String mbId){
-		
+
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
-		
+
 		try {
-			
+
 			sql = "update member set mb_pic=? where mb_id=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, mbPic);
 			pstmt.setString(2, mbId);
-			
+
 			result = pstmt.executeUpdate();
-			
+
 			pstmt.close();
-			
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return result;
-		
+
 	}
 
 	public int updateMember(MemberDTO dto){
@@ -216,66 +216,66 @@ public class TalentDAO {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
-		
+
 		try {
-			
+
 			sql = "update member set mb_nickName=?,mb_about=? where mb_id=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, dto.getMbNickName());
 			pstmt.setString(2, dto.getMbAbout());
 			pstmt.setString(3, dto.getMbId());
-			
+
 			result = pstmt.executeUpdate();
-			
+
 			pstmt.close();
-			
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
+
 		return result;	
 	}
 
-	
+
 	public int updateMember(String mbId,String changeMbPw1,String changeMbPw2){
-		
+
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
-		
+
 		try {
-			
+
 			sql = "update member set mb_pw=? where mb_id=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, changeMbPw1);
 			pstmt.setString(2, mbId);
-			
-			
+
+
 			result = pstmt.executeUpdate();
-			
+
 			pstmt.close();
-			
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
+
 		return result;	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 	public int getMaxNum() {
 
 		int result = 0;
@@ -308,8 +308,8 @@ public class TalentDAO {
 
 		try {
 			sql = "insert into board(br_num,mb_id,cg_num,br_subject, ";
-			sql += "br_mainphoto,br_morephoto,br_content,br_options,br_price,br_date) ";
-			sql += "values (?,?,?,?,?,?,?,?,?,sysdate)";
+			sql += "br_mainphoto,br_morephoto,br_content,br_options,br_price,br_date,br_count) ";
+			sql += "values (?,?,?,?,?,?,?,?,?,sysdate,0)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dto.getBrNum());
 			pstmt.setString(2, dto.getMbId());
@@ -342,9 +342,9 @@ public class TalentDAO {
 		String sql;
 		try {
 			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
-			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
+			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date,A.br_count ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num order by A.br_num desc";
-			
+
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, start);
@@ -378,13 +378,13 @@ public class TalentDAO {
 		}
 		return lists;
 	}
-	
-	
-	
-	
+
+
+
+
 	//대분류로 분류해서 최고가,최저가,날짜순으로 출력하기
 	public List<BoardDTO> list(int start, int end,String column,String order) {
-	
+
 		List<BoardDTO> lists = new ArrayList<BoardDTO>();
 		BoardDTO dto = null;
 		PreparedStatement pstmt = null;
@@ -395,7 +395,7 @@ public class TalentDAO {
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and A.cg_num>=? and A.cg_num<=? and A.cg_num=C.cg_num ";
 			sql += "order by A."+column+" "+order;
-			
+
 			/*sql = "select B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
 			sql += "from board A,member B where A.mb_id=B.mb_id and cg_num>=? and cg_num<=? order by A.br_num desc";*/
@@ -403,7 +403,7 @@ public class TalentDAO {
 
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
-		
+
 
 			rs = pstmt.executeQuery();
 
@@ -422,6 +422,7 @@ public class TalentDAO {
 				dto.setBrOptions(rs.getString("br_options"));
 				dto.setBrPrice(rs.getInt("br_price"));
 				dto.setBrDate(rs.getString("br_date"));
+				dto.setBrCount(rs.getInt("br_count"));
 				lists.add(dto);
 
 			}
@@ -433,51 +434,51 @@ public class TalentDAO {
 		}
 		return lists;
 	}
-	
-	
-	
+
+
+
 	// �Խ��� ��� (�Һз��� ���)
-		public List<BoardDTO> list(int cgNum) {
+	public List<BoardDTO> list(int cgNum) {
 
-			List<BoardDTO> lists = new ArrayList<BoardDTO>();
-			BoardDTO dto = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql;
-			try {
-				
-				
-				sql = "select br_num,br_subject,br_mainphoto,br_price from board ";
-				sql+= "where cg_num=? order by br_date desc";
-				pstmt = conn.prepareStatement(sql);
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		try {
 
-				pstmt.setInt(1, cgNum);
-				
 
-				rs = pstmt.executeQuery();
+			sql = "select br_num,br_subject,br_mainphoto,br_price from board ";
+			sql+= "where cg_num=? order by br_date desc";
+			pstmt = conn.prepareStatement(sql);
 
-				while (rs.next()) {
+			pstmt.setInt(1, cgNum);
 
-					dto = new BoardDTO();
-					
-					dto.setBrNum(rs.getInt("br_num"));
-					dto.setBrSubject(rs.getString("br_subject"));
-					dto.setBrMainPhoto(rs.getString("br_mainphoto"));
-					dto.setBrPrice(rs.getInt("br_price"));
-				
-					lists.add(dto);
 
-				}
-				rs.close();
-				pstmt.close();
+			rs = pstmt.executeQuery();
 
-			} catch (Exception e) {
-				System.out.println(e.toString());
+			while (rs.next()) {
+
+				dto = new BoardDTO();
+
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				dto.setBrPrice(rs.getInt("br_price"));
+
+				lists.add(dto);
+
 			}
-			return lists;
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
 		}
-	
-	
+		return lists;
+	}
+
+
 
 	// board �Խ��� �Ѱ� select
 	public BoardDTO getReadData(int brNum) {
@@ -594,13 +595,13 @@ public class TalentDAO {
 
 	}
 
-	
-	
-	
-	
+
+
+
+
 	//ī�װ� �ҷ�����
 	public List<CategoryDTO> getReadCategory(int start,int end){
-		
+
 		List<CategoryDTO> lists = new ArrayList<CategoryDTO>();
 		CategoryDTO dto = null;
 		PreparedStatement pstmt = null;
@@ -612,31 +613,31 @@ public class TalentDAO {
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			rs = pstmt.executeQuery();
-			
+
 			while(rs.next()){
 				dto = new CategoryDTO();
 				dto.setCgNum(rs.getInt("cg_num"));
 				dto.setCgCategory1(rs.getString("cg_category1"));
 				dto.setCgCategory2(rs.getString("cg_category2"));
-				
+
 				lists.add(dto);
 			}
 			rs.close();
 			pstmt.close();
-			
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return lists;
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	//////////////////////////////////////////////////////////////////////////
 	// maxnum(cm_num)
 	public int cmMaxNum() {
@@ -712,7 +713,7 @@ public class TalentDAO {
 			sql += "from comments where br_num=?";
 
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, brNum);
 
 			rs = pstmt.executeQuery();
@@ -740,13 +741,13 @@ public class TalentDAO {
 		return lists;
 
 	}
-	
-	
-	
-	
+
+
+
+
 	//GDetail 관련재능
 	public List<BoardDTO> getReadRelation(int start,int end){
-		
+
 		List<BoardDTO> lists = new ArrayList<BoardDTO>();
 		BoardDTO dto = null;
 		PreparedStatement pstmt = null;
@@ -768,37 +769,79 @@ public class TalentDAO {
 			}
 			rs.close();
 			pstmt.close();
-			
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return lists;
 	}
-	
-	
-	//검색해서 찾기
-	public List<BoardDTO> selectSubject(String searchValue){
-		
+
+	//메인페이지 new재능순 출력
+	public List<BoardDTO> newTalentList(){
+
 		List<BoardDTO> lists = new ArrayList<BoardDTO>();
 		BoardDTO dto = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
+
 		try {
-			
+
+			sql = "select B.cg_category1,A.br_num,A.br_subject,A.br_mainphoto,A.br_price ";
+			sql+= "from board A,category B where A.cg_num=B.cg_num order by A.br_num desc";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+
+				dto = new BoardDTO();
+
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setCgCategory1(rs.getString("cg_category1"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				dto.setBrPrice(rs.getInt("br_price"));
+				lists.add(dto);
+
+			}
+
+			rs.close();
+			pstmt.close();
+
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return lists;
+
+	}
+
+
+	//검색해서 찾기
+	public List<BoardDTO> selectSubject(String searchValue){
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+
 			searchValue ="%" + searchValue + "%";
-			
+
 			sql = "select C.cg_category1,B.mb_nickName,A.br_num,A.mb_id,A.cg_num,A.br_subject, ";
 			sql += "A.br_mainphoto,A.br_morephoto,A.br_content,A.br_options,A.br_price,A.br_date ";
 			sql += "from board A, member B, category C where A.mb_id=B.mb_id and "
 					+ "A.cg_num>=1 and A.cg_num<=109 and A.cg_num=C.cg_num and (A.br_subject like ? "
 					+ "or B.mb_nickName like ?) order by A.br_num desc";
-			
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchValue);
 			pstmt.setString(2, searchValue);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()){
 				dto = new BoardDTO();
 				dto.setCgCategory1(rs.getString("cg_category1"));
@@ -814,28 +857,84 @@ public class TalentDAO {
 				dto.setBrPrice(rs.getInt("br_price"));
 				dto.setBrDate(rs.getString("br_date"));
 				lists.add(dto);
-				
-				
 			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 		
+		return lists;
+	}
+
+	//메인페이지 조회수 순 출력
+	public List<BoardDTO> mainCountList(){
+		List<BoardDTO> lists = new ArrayList<BoardDTO>();
+		BoardDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+			sql = "select C.mb_nickName,B.cg_category1,A.br_num,A.br_subject,A.br_mainphoto,A.br_price,A.br_count ";
+			sql+= "from board A,category B,member C where A.cg_num=B.cg_num and A.mb_id=C.mb_id order by A.br_count desc";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+
+				dto = new BoardDTO();
+
+				dto.setBrNum(rs.getInt("br_num"));
+				dto.setCgCategory1(rs.getString("cg_category1"));
+				dto.setBrSubject(rs.getString("br_subject"));
+				dto.setBrMainPhoto(rs.getString("br_mainphoto"));
+				dto.setBrPrice(rs.getInt("br_price"));
+				dto.setBrCount(rs.getInt("br_count"));
+				dto.setMbNickName(rs.getString("mb_nickName"));
+
+				lists.add(dto);
+			}
+
+			rs.close();
+			pstmt.close();
+
+
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return lists;
-		
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+	//조회수증가
+	public int updateBrCount(int brNum){
+
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+		String sql;
+
+		try {
+
+			sql = "update board set br_count = br_count + 1 ";
+			sql+= "where br_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, brNum);
+
+			result = pstmt.executeUpdate();
+
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return result;
+	}
+
 
 }
 

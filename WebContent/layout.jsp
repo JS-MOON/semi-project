@@ -373,7 +373,9 @@
 					</a>
 				</h1>
 				<div class="searchWindow">
+
 					<input name="searchValue" type="text" maxlength="10" title="TopSearch"
+
 						   class="mainSearch" onkeydown="javascript:SrcKeydown();" />
 					<a id="lbtnTopSearch" class="btnSearch" alt="검색" onclick="searchSubject();" href="#"/> <img
 						src="../resources/images/common/btn_main_search.png" alt="검색">

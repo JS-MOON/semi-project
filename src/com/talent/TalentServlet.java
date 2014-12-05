@@ -159,9 +159,18 @@ public class TalentServlet extends HttpServlet {
 		} else if (uri.contains("Main.do")) {
 			String str = "";
 
+			String imagePath = cp + "/Product";
+			
 			str = (String) req.getAttribute("str");
+			
+			List<BoardDTO> newLists = dao.newTalentList();
+			
+			List<BoardDTO> countLists = dao.mainCountList();
 
 			req.setAttribute("str", str);
+			req.setAttribute("imagePath", imagePath);
+			req.setAttribute("newLists", newLists);
+			req.setAttribute("countLists", countLists);
 
 			url = "/Goods/Main.jsp";
 			forward(req, resp, url);
@@ -368,6 +377,7 @@ public class TalentServlet extends HttpServlet {
 			int start = Integer.parseInt(req.getParameter("start"));
 			int end = Integer.parseInt(req.getParameter("end"));
 
+
 			String option = req.getParameter("range");
 
 			if(option.equals("1")){//가격 내림차순
@@ -433,6 +443,7 @@ public class TalentServlet extends HttpServlet {
 					start = 97;
 					end = 109;
 				}
+
 			}
 			
 			//카테고리 찍어주기
@@ -458,7 +469,10 @@ public class TalentServlet extends HttpServlet {
 
 			BoardDTO dto = dao.getReadData(brNum);
 
+			dao.updateBrCount(brNum);
+			
 			List<String> op = dto.getBrOptionsList();
+
 
 			// ī�װ� �ҷ�����
 			int cgNum = dto.getCgNum();
@@ -484,7 +498,6 @@ public class TalentServlet extends HttpServlet {
 			//���
 			List<CommentsDTO> lists = dao.cmList(brNum);
 			List<CommentsDTO> newLists = new ArrayList<CommentsDTO>();
-
 
 			String[] subject = new String[lists.size()];
 
@@ -591,35 +604,3 @@ public class TalentServlet extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

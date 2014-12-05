@@ -222,10 +222,6 @@
         }
 
         f.completedOption.value = option;
-
-        
-        
-        
        
         if(f.brSubject.value==""){
         	alert("재능제목을 적어주세요");
@@ -239,6 +235,9 @@
         	alert("재능설명을 적어주세요");
         	return;
         }
+
+		alert(f.completedOption.value);
+		alert(f.s1.value +" : "+ f.s2.value);
 
         f.action = "SellProdReg_ok.do";
         f.submit();
@@ -291,13 +290,9 @@
 
                </select>
 
-
             </div>
 
-
-
             	 <input name="mbId" type="hidden" value="${sessionScope.session.mbId }" />
-
 
             <h4>재능 타이틀</h4>
             <div class="settingOption title">
@@ -305,8 +300,6 @@
                 <textarea name="brSubject" maxlength="100" class="textarea" style="width: 100%; height: 55px;"></textarea>
 
             </div>
-
-
 
             <h4>연락처</h4>
             <p class="settingDesc">미스터스 팀에서 판매자에게 연락할 수 있는 번호를 입력해주세요.</p>
