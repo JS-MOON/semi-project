@@ -20,8 +20,13 @@
 			<div>
 				<div class="subCategory">
 					<ul>
+
 						<li><a href="GList.jsp?pg%3d1%26sr%3d1%26cy%3d140&ct=140">
-								<input type="submit" name="" value="전체"
+								<input type="submit" name="" value="전체">
+
+						<li><a href="GList.do?start=1&end=109">
+								<input type="submit" name=""
+								value="전체"
 								style="background-color: #EDEDED; border-style: None; height: 26px;" />
 						</a></li>
 
@@ -61,7 +66,32 @@
 										src="../Profile/M00141006995286W/Profile/M00141006995286W.png"
 										alt="" Height=36px Width=36px /> <span class="user_id">${dto.mbNickName}
 									</span>
+<<<<<<< HEAD
 
+=======
+								</div>
+							</div>
+							
+							<a href="GDetail.do?brNum=${dto.brNum }">
+							<div>
+								
+									<span class="pdtThumb"> <img
+										src="../Product/${dto.brMainPhoto}"
+										alt="기업용 홈페이지 제작해드립니다." Height=308px Width=308px /> <span
+										class="btnWistList on"> <input type="image"
+											src="../resources/images/product/btn_wishList_on.png"
+											style="border-style: None;" />
+									</span>
+								</span>
+								
+							</div>
+							<div class="pdt_info">
+								<span class="category">[${dto.cgCategory1}]
+								</span> <span class="pdtTitle">${dto.brSubject }</span>
+								<div class="counting">
+									<span class="buying"> <span class="num">262</span> <span>View</span>
+									</span> <span class="price"> <span class="num">${dto.brPrice }</span> 원
+>>>>>>> origin/master
 									</span>
 									<div class="sellerCondition">
 										<span class="onOff on">ONLINE</span> <span class="response">평균

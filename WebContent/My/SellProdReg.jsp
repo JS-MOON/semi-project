@@ -222,9 +222,35 @@
         }
 
         f.completedOption.value = option;
+<<<<<<< HEAD
+        
+        
+        
+       
+        if(f.brSubject.value==""){
+        	alert("재능제목을 적어주세요");
+        	return;
+        }
+        if(f.brPrice.value==""){
+        	alert("가격을 적어주세요");
+        	return;
+        }
+        if(f.brContent.value==""){
+        	alert("재능설명을 적어주세요");
+        	return;
+        }
+        
+        
+        
+        
+        
+			
+		
+=======
 		alert(f.completedOption.value);
 		alert(f.s1.value +" : "+ f.s2.value);
 
+>>>>>>> origin/master
         f.action = "SellProdReg_ok.do";
         f.submit();
 
@@ -275,6 +301,10 @@
                		<option value="0">선택하세요</option>
 
                </select>
+<<<<<<< HEAD
+               
+               
+=======
 
 
 
@@ -318,6 +348,7 @@
                     <option value="1101014">PPT/템플릿</option>
 
                 </select> -->
+>>>>>>> origin/master
 
             </div>
 
