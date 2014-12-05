@@ -774,7 +774,7 @@ public class TalentDAO {
 		String sql;
 
 		try {
-			sql = "select nvl(max(cm_num),0) from history";
+			sql = "select nvl(max(hs_num),0) from history";
 
 			pstmt = conn.prepareStatement(sql);
 

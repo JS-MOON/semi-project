@@ -189,17 +189,7 @@
    		  s2.options.add(new Option("Wedding the M", "109"));
       }
 
-
-
-
     }
-
-
-
-
-
-
-
 
 	function sellIt() {
 		var f = document.sellForm;
